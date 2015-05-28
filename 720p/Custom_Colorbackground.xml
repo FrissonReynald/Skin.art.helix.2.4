@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window type="dialog" id="1107">
+    <defaultcontrol always="true">9500</defaultcontrol>  	
+	<coordinates>
+		<system>1</system>
+		<left>50</left>
+		<top>104</top>
+	</coordinates>	
+	<onunload>ClearProperty(backgroundselect,home)</onunload>
+	
+	<controls>
+	<include>transition_Dialog</include>
+	<control type="label">
+			<label>[COLOR=$VAR[ColourHighlight]]$LOCALIZE[31748][/COLOR] [COLOR=$INFO[Control.GetLabel(100)]]$LOCALIZE[31749][/COLOR]</label>
+			<left>831</left>
+			<top>185</top>
+			<width>auto</width>
+			<font>Medium</font>
+			<color>$VAR[ColourHighlight]</color>
+		</control>
+	<control type="image">
+	<texture border="5" colordiffuse="Black70">frames/contentpanel.png</texture>
+	<left>-40</left>
+			<height>560</height>
+				<width>1200</width>
+			<include>dialog_Window</include>
+		</control>
+		<control type="image">
+            <left>-25</left>
+			<top>310</top>
+            <width>16</width>
+            <height>16</height>
+            <texture flipx="true">common/arrow-small-right.png</texture>
+        </control>
+        <control type="image">
+             <left>715</left>
+			<top>310</top>
+            <width>16</width>
+            <height>16</height>
+            <texture flipx="false">common/arrow-small-right.png</texture>
+        </control>
+	
+			<control type="label" id="1">
+			<width>592</width>
+			<top>15</top>
+			<left>260</left>
+			<label>Choice a color</label>
+			<textcolor>ffffffff</textcolor>
+			<include>detail_Sub</include>			
+		</control>	
+        <control type="group"> <!--content -->
+            <control type="panel" id="9500"> <!--colours -->
+                
+                <top>50</top>                
+                <height>500</height>
+				<width>1000</width>
+                <onup>9500</onup>
+                <ondown>9500</ondown>
+                <onleft>9500</onleft>
+                <onright>9500</onright>
+                <orientation>horizontal</orientation>
+                <scrolltime>200</scrolltime>
+               <itemlayout height="155" width="155">
+					<control type="image">
+						<left>7</left>
+						<top>7</top>
+						<width>150</width>
+						<height>150</height>
+						<texture>$INFO[ListItem.Thumb]</texture>
+					</control>
+					<control type="image"> <!--watched icon -->
+						<centerright>18</centerright>
+						<centertop>25</centertop>
+						<width>32</width>
+						<height>32</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<include>WatchedOverlay</include>
+						<texture>indicator/checkmark.png</texture>
+						<visible>StringCompare(ListItem.Label2,selected)</visible>
+					</control>
+				</itemlayout>
+				<focusedlayout height="155" width="155">
+					<control type="image">
+						<left>0</left>
+						<width>164</width>
+						<height>164</height>
+						<texture>$INFO[ListItem.Thumb]</texture>
+						<bordertexture>common/white.png</bordertexture>
+						<bordersize>7</bordersize>
+					</control>
+					<control type="image"> <!--watched icon -->
+						<centerright>18</centerright>
+						<centertop>25</centertop>
+						<width>32</width>
+						<height>32</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<include>WatchedOverlay</include>
+						<visible>[StringCompare(ListItem.Label,Skin.String(backgroundColor.name)) + !StringCompare(ListItem.Label2,selected)]</visible>
+						<texture>indicator/checkmark.png</texture>
+					</control>
+				</focusedlayout>
+                <content>
+             
+                  
+					<item id="2"> <!--green 2 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF80d535)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF80d535.png</thumb>
+						<label>FF80d535</label>
+					</item>
+					<item id="3"> <!--green 6 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF69a013)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF69a013.png</thumb>
+						<label>FF69a013</label>
+					</item>
+					<item id="4"> <!--green 7 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF91ad10)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF91ad10.png</thumb>
+						<label>FF91ad10</label>
+					</item>
+					<item id="5"> <!--black -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF000000)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF000000.png</thumb>
+						<label>FF000000</label>
+					</item>
+					<item id="6"> <!--green 9 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFb5c814)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFb5c814.png</thumb>
+						<label>FFb5c814</label>
+					</item>
+					<item id="7"> <!--green 12 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFe8ef23)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFe8ef23.png</thumb>
+						<label>FFe8ef23</label>
+					</item>
+					<item id="8"> <!--yellow 1 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFfed530)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFfed530.png</thumb>
+						<label>FFfed530</label>
+					</item>
+					<item id="9"> <!--yellow 3 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFebbd04)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFebbd04.png</thumb>
+						<label>FFebbd04</label>
+					</item>
+					<item id="10"> <!--grey 1 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF222222)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF222222.png</thumb>
+						<label>FF222222</label>
+					</item>
+					<item id="11"> <!--yellow 5 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFd1a408)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFd1a408.png</thumb>
+						<label>FFd1a408</label>
+					</item>
+					<item id="12"> <!--orange 1 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFf6983c)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFf6983c.png</thumb>
+						<label>FFf6983c</label>
+					</item>
+					<item id="13"> <!--orange 3 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFfb8512)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFfb8512.png</thumb>
+						<label>FFfb8512</label>
+					</item>
+					<item id="14"> <!--orange 5 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFf16816)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFf16816.png</thumb>
+						<label>FFf16816</label>
+					</item>
+					<item id="15"> <!--grey 2 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF444444)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF444444.png</thumb>
+						<label>FF444444</label>
+					</item>
+					<item id="16"> <!--orange 6 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFf14416)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFf14416.png</thumb>
+						<label>FFf14416</label>
+					</item>
+					<item id="17"> <!--red 1 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFe95d4e)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFe95d4e.png</thumb>
+						<label>FFe95d4e</label>
+					</item>
+					<item id="19"> <!--red 4 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFed2914)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFed2914.png</thumb>
+						<label>FFed2914</label>
+					</item>
+					<item id="21"> <!--red 6 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFc81805)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFc81805.png</thumb>
+						<label>FFc81805</label>
+					</item>
+					<item id="20"> <!--grey 3 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF666666)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF666666.png</thumb>
+						<label>FF666666</label>
+					</item>
+					<item id="22"> <!--red 7 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFc90533)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFc90533.png</thumb>
+						<label>FFc90533</label>
+					</item>
+					<item id="23"> <!--red 9 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFd82f76)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFd82f76.png</thumb>
+						<label>FFd82f76</label>
+					</item>
+					<item id="24"> <!--pink 2 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFfd76d0)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFfd76d0.png</thumb>
+						<label>FFfd76d0</label>
+					</item>
+					<item id="26"> <!--pink 6 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFeb37d0)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFeb37d0.png</thumb>
+						<label>FFeb37d0</label>
+					</item>
+					<item id="25"> <!--grey 4 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF888888)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF888888.png</thumb>
+						<label>FF888888</label>
+					</item>
+					<item id="27"> <!--pink 8 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF995b7e)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF995b7e.png</thumb>
+						<label>FF995b7e</label>
+					</item>
+					<item id="28"> <!--purple 2 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFaf6bdf)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFaf6bdf.png</thumb>
+						<label>FFaf6bdf</label>
+					</item>
+					<item id="29"> <!--purple 4 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF9544ce)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF9544ce.png</thumb>
+						<label>FF9544ce</label>
+					</item>
+					<item id="31"> <!--purple 5 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF862ec3)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF862ec3.png</thumb>
+						<label>FF862ec3</label>
+					</item>
+					<item id="30"> <!--grey 5 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFaaaaaa)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFaaaaaa.png</thumb>
+						<label>FFaaaaaa</label>
+					</item>
+					<item id="32"> <!--purple 6 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF522f73)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF522f73.png</thumb>
+						<label>FF522f73</label>
+					</item>
+					<item id="33"> <!--purple 7 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF5334da)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF5334da.png</thumb>
+						<label>FF5334da</label>
+					</item>
+					<item id="34"> <!--purple 8 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF305bd4)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF305bd4.png</thumb>
+						<label>FF305bd4</label>
+					</item>
+					<item id="36"> <!--purple 10 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF4b82de)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF4b82de.png</thumb>
+						<label>FF4b82de</label>
+					</item>
+					<item id="35"> <!--grey 6 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFcccccc)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFcccccc.png</thumb>
+						<label>FFcccccc</label>
+					</item>
+					<item id="37"> <!--blue -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF4d86a6)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF4d86a6.png</thumb>
+						<label>FF4d86a6</label>
+					</item>
+					<item id="38"> <!--blue 5 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF2d95d7)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF2d95d7.png</thumb>
+						<label>FF2d95d7</label>
+					</item>					
+					<item id="39"> <!--blue 3 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF4bb4f6)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF4bb4f6.png</thumb>
+						<label>FF4bb4f6</label>
+					</item>
+					<item id="41"> <!--cyan 1 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF00ffff)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF00ffff.png</thumb>
+						<label>FF00ffff</label>
+					</item>
+					<item id="40"> <!--grey 7 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFeeeeee)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFeeeeee.png</thumb>
+						<label>FFeeeeee</label>
+					</item>
+					<item id="42"> <!--aqua 3 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF2ae1b8)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF2ae1b8.png</thumb>
+						<label>FF2ae1b8</label>
+					</item>
+					<item id="43"> <!--aqua 6 -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF0fd382)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF0fd382.png</thumb>
+						<label>FF0fd382</label>
+					</item>
+					<item id="44"> <!--green -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF499d73)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF499d73.png</thumb>
+						<label>FF499d73</label>
+					</item>
+					<item id="18"> <!--brown -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FF6b5441)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FF6b5441.png</thumb>
+						<label>FF6b5441</label>
+					</item>
+					<item id="45"> <!--white -->
+						<onclick condition="!IsEmpty(Window(home).Property(backgroundselect))">Skin.SetString(backgroundColor.name,FFffffff)</onclick>
+						<onclick>Close</onclick>
+						<thumb>special://skin/extras/colors/FFffffff.png</thumb>
+						<label>FFffffff</label>
+					</item>
+                </content>
+            </control>
+        </control>
+    </controls>
+</window>

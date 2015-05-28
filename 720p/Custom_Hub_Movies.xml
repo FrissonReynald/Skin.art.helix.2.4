@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window type="window" id="1101">
+    <defaultcontrol always="true">9501</defaultcontrol>
+    <allowoverlay>false</allowoverlay>
+    <controls>
+	 <include>global_background</include>
+	      
+        <include>Furniture_Header</include>
+        <include>Furniture_NowPlaying</include>
+        <include>Furniture_Clock</include>
+        <include>Furniture_Hub_Flags</include>
+		
+        <control type="group">		  
+            <include>Animation.Common</include>
+            <control type="group">
+                <top>PosterPad</top>
+                <left>SidePad</left>
+                <right>SidePad</right>
+                <height>640</height>
+                <control type="group">
+				  <control type="image">
+				  <left>-5</left>
+				  <top>-5</top>
+                        
+                        <include>screen_Dimensions</include>
+                     
+                        <texture border="15" colordiffuse="ff000000">common/rounded-shadow8.png</texture>
+                    </control>                 
+					 <control type="image">
+                        <left>-8</left>
+                        <width>1138</width>
+						<height>653</height>
+                        <top>-8</top>
+                        <bottom>-8</bottom>
+                        <texture>frames/frame-nf.png</texture>
+						<bordertexture colordiffuse="$VAR[ColorHighlightVar]">white.png</bordertexture>
+						<bordersize>2</bordersize>
+                    </control>
+					 <control type="image">
+                        <left>-8</left>
+                        <width>1138</width>
+                        <top>-8</top>
+                        <bottom>-8</bottom>
+                        <texture border="15" colordiffuse="$VAR[ColorHome]">common/rounded-shadow8.png</texture>
+						  </control>
+                    <control type="image">
+                        <left>0</left>
+                        <width>1122</width>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <texture background="true" diffuse="diffuse/home-fanart.png">pvr/background.jpg</texture>
+                        <visible>!IntegerGreaterThan(Container(9500).NumItems,0)</visible>
+                    </control>					
+						<control type="image">
+                        <left>50</left>
+                        <width>750</width>
+						 <height>64</height>
+                        <top>30</top>
+                      
+                        <texture border="15" colordiffuse="Black100">common/white.png</texture>
+						  </control>
+						   <control type="label">
+                            <left>60</left>
+							<top>35</top>
+                            <width>auto</width>
+                            <aligny>center</aligny>
+                            <height>64</height>
+                            <font>condensed_HomeSubSmall</font>
+                            <textcolor>PanelWhite70</textcolor>
+                            <selectedcolor>PanelWhite70</selectedcolor>
+                            <label>$INFO[Container(9500).ListItem.Label]</label>
+                        </control>
+                    <control type="list" id="9500">
+                        <description>Widget</description>
+                        <left>50</left>
+                        <width>750</width>
+						<height>440</height>
+                        <top>100</top>
+                        <bottom>0</bottom>
+                        <onright>9501</onright>
+                        <onup>9500</onup>
+                        <ondown>9500</ondown>
+                        <preloaditems>1</preloaditems>
+                        <orientation>vertical</orientation>
+                        <autoscroll time="10000">!Control.HasFocus(9500)</autoscroll>
+                        <scrolltime tween="quadratic">400</scrolltime>
+                        <include>Animation.FadeIn</include>
+                        <include>Animation.FadeOut</include>
+                        <itemlayout width="750" height="440">
+                            <control type="image">
+                                <width>100%</width>
+                                <height>100%</height>
+                                <texture background="true" diffuse="diffuse/home-fanart.png">$VAR[global_Fanart]</texture>
+                            </control>
+                        </itemlayout>
+                        <focusedlayout width="750" height="440">
+                            <control type="image">
+                                <width>100%</width>
+                                <height>100%</height>
+                                <texture background="true" diffuse="diffuse/home-fanart.png">$VAR[global_Fanart]</texture>
+                            </control>
+                        </focusedlayout>
+                        <content target="video">$VAR[DefMovieHubWidget]</content>
+                    </control>
+                    <control type="group">
+                        <left>50</left>
+                        <width>750</width>
+                        <bottom>0</bottom>
+                        <height>70</height>
+                        <visible>IntegerGreaterThan(Container(9500).NumItems,0)</visible>
+                        <control type="image">
+                            <left>0</left>
+                            <right>0</right>
+                            <bottom>0</bottom>
+                            <height>70</height>
+                            <texture border="15" colordiffuse="df000000">common/white.png</texture>
+                        </control>
+                        <control type="label">
+                            <posx>30</posx>
+                            <width>200</width>
+                            <font>Small</font>
+                            <aligny>center</aligny>
+                            <height>64</height>
+                            <textcolor>PanelWhite70</textcolor>
+                            <selectedcolor>PanelWhite70</selectedcolor>
+                            <label>$INFO[Container(9500).ListItem.Year]</label>
+                        </control>
+                        <control type="label">
+                            <posx>120</posx>
+                            <width>400</width>
+                            <aligny>center</aligny>
+                            <height>64</height>
+                           <font>condensed_HomeSubSmall</font>
+                            <textcolor>PanelWhite70</textcolor>
+                            <selectedcolor>PanelWhite70</selectedcolor>
+                            <label>$INFO[Container(9500).ListItem.Tagline,,]</label>
+							<autoscroll delay="autoscroll_Delay" time="autoscroll_Time" repeat="1000">Skin.HasSetting(autoscroll.enable)</autoscroll>
+	
+                        </control>
+                        <control type="label">
+                            <right>154</right>
+                            <width>500</width>
+                            <aligny>center</aligny>
+                            <height>64</height>
+                            <align>right</align>
+                           <font>condensed_HomeSubSmall</font>
+                            <textcolor>PanelWhite70</textcolor>
+                            <selectedcolor>PanelWhite70</selectedcolor>
+                            <label>$INFO[Container(9500).ListItem.Duration,, $LOCALIZE[31701]]</label>
+                        </control>
+                        <control type="image">
+                            <centerright>110</centerright>
+                            <centertop>32</centertop>
+                            <width>32</width>
+                            <height>32</height>
+                            <aspectratio aligny="top">keep</aspectratio>
+                            <texture>$VAR[PercentWatched9500]</texture>
+                        </control>
+                        <control type="label">
+                            <right>30</right>
+                            <width>500</width>
+                            <aligny>center</aligny>
+                            <height>64</height>
+                            <align>right</align>
+                            <font>condensed_HomeSubSmall</font>
+                            <textcolor>PanelWhite70</textcolor>
+                            <selectedcolor>PanelWhite70</selectedcolor>
+                            <label>$INFO[Container(9500).ListItem.Rating]</label>
+                        </control>					
+                    </control>
+					
+                    <control type="image">
+                      <left>50</left>
+                        <width>750</width>
+						<height>440</height>
+                        <top>100</top>
+                        <texture colordiffuse="White100" border="20">common/selectbox.png</texture>
+                        <visible>Control.HasFocus(9500)</visible>
+                    </control>
+                </control>
+                
+                <control type="group">
+                    <control type="list" id="9501">
+                        <description>Widget</description>
+                        <left>850</left>
+                        <right>0</right>
+                        <top>100</top>
+                        <height>500</height>
+                        <onleft>9500</onleft>
+                        <onright>60</onright>
+                        <onup>9501</onup>
+                        <ondown>9501</ondown>
+                        <pagecontrol>60</pagecontrol>
+                        <preloaditems>2</preloaditems>
+                        <orientation>vertical</orientation>
+                        <scrolltime tween="quadratic">400</scrolltime>
+                        <include>Animation.FadeIn</include>
+                        <include>Animation.FadeOut</include>
+                        <itemlayout width="350" height="80">
+                            <control type="image">
+                                <right>0</right>
+                                <top>0</top>
+                                <bottom>0</bottom>
+                                <width>80</width>
+                                <texture colordiffuse="White100">$INFO[ListItem.Icon]</texture>
+                                <visible>substring(ListItem.Icon,special://skin/extras/icons/)</visible>
+                            </control>
+                            <control type="label">
+                                <left>30</left>
+                                <right>80</right>
+                                <height>100%</height>
+                               <font>condensed_HomeSubSmall</font>
+                                <textcolor>White100</textcolor>
+                                <label>$INFO[ListItem.Label]</label>								
+                            </control>
+                        </itemlayout>
+                        <focusedlayout width="350" height="80">
+                            <control type="group">
+                                <visible>Control.HasFocus(9501)</visible>
+                                <control type="image">
+                                    <width>77%</width>
+                                    <height>100%</height>
+                                    <texture border="15" colordiffuse="Dark1">common/box.png</texture>
+                                </control>
+								 <control type="image">
+								 <left>282</left>
+                                    <width>23%</width>
+                                    <height>100%</height>
+                                    <texture border="15" colordiffuse="Dark1">common/box.png</texture>
+                                </control>
+                                <control type="image">
+                                    <right>0</right>
+                                    <top>0</top>
+                                    <bottom>0</bottom>
+                                    <width>80</width>
+                                    <texture colordiffuse="White100">$INFO[ListItem.Icon]</texture>
+                                    <visible>substring(ListItem.Icon,special://skin/extras/icons/)</visible>
+                                </control>
+                                <control type="label">
+                                    <left>30</left>
+                                    <right>80</right>
+                                    <height>100%</height>
+                                   <font>condensed_HomeSubSmall</font>
+                                    <textcolor>Light1</textcolor>
+                                    <label>$INFO[ListItem.Label]</label>
+                                </control>
+                            </control>
+                            <control type="group">
+                                <visible>!Control.HasFocus(9501)</visible>
+                                <control type="image">
+                                    <right>0</right>
+                                    <top>0</top>
+                                    <bottom>0</bottom>
+                                    <width>80</width>
+                                    <texture colordiffuse="White100">$INFO[ListItem.Icon]</texture>
+                                    <visible>substring(ListItem.Icon,special://skin/extras/icons/)</visible>
+                                </control>
+                                <control type="label">
+                                    <left>30</left>
+                                    <right>80</right>
+                                    <height>100%</height>
+                                   <font>condensed_HomeSubSmall</font>
+                                    <textcolor>White70</textcolor>
+                                    <label>$INFO[ListItem.Label]</label>
+                                </control>
+                            </control>
+                        </focusedlayout>
+                         <content><include>skinshortcuts-group-movieshub</include></content>
+                    </control>
+                </control>
+                
+            </control>
+            <control type="scrollbar" id="60">
+                <onback>9501</onback>
+                <centerright>60</centerright>
+                <posy>PosterPad</posy>
+                <height>PosterH</height>
+                <width>8</width>
+                <onleft>9501</onleft>
+                <onright>9501</onright>
+                <texturesliderbackground border="4" colordiffuse="Dark4">scrollbar/scrollv.png</texturesliderbackground>
+                <texturesliderbar border="4" colordiffuse="Dark3">scrollbar/scrollv.png</texturesliderbar>
+                <texturesliderbarfocus border="4" colordiffuse="Dark1">scrollbar/scrollv.png</texturesliderbarfocus>
+                <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(60) + !Container.Scrolling">Conditional</animation>
+            </control>
+        </control>
+    </controls>
+</window>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<colors>
+  
+	<color name="base_2">ff004160</color><!--primary overlay / menu color-->
+	<color name="base_3">ff0c2c40</color><!--secondary overlay / menu color (home menu)-->
+	<color name="accent_1">ff383838</color><!--primary accent color (seekbar)-->
+	<color name="accent_2">ff383838</color><!--secondary accent color (home submenu)-->
+	
+<!--text-->
+	<color name="Color1">ffffffff</color><!--main textcolor-->
+	<color name="Color2">ff6aa6cb</color><!--secondary textcolor-->
+	<color name="Color3">ffcacaca</color><!--tertiary textcolor-->
+	<color name="Color7">FFebebeb</color><!--description / plot textcolor-->
+
+<!--buttons / control states (text)-->
+	<color name="Focused">FF111111</color>
+	<color name="Disabled">ff9a9a9a</color>
+	<color name="Selected">ff27ae60</color>
+	<color name="Warning">ffff4e4e</color>
+
+<!--columns / lists-->
+	<color name="column1">ffffffff</color><!--main columns text color-->
+	<color name="column2">dd383838</color><!--primary columns base color-->
+	<color name="column3">ff383838</color><!--secondary columns base color-->
+
+<!--dialogs-->
+	<color name="glyph_nf">ff7d7d7d</color>
+	<color name="glyph_fo">ffffffff</color>
+	<color name="Color4">FF373737</color><!--primary dialog textcolor-->
+	<color name="Color5">FF4c4c4c</color><!--secondary dialog textcolor-->
+
+<!--pvr-->
+	<color name="rec1">ffFF1744</color><!--textcolor for unfocused recording items-->
+	<color name="rec2">ffB71C1C</color><!--textcolor for focused recording items-->
+	
+	!--Views-->
+    <color name="Black">FF000000</color>
+    <color name="White">FFFFFFFF</color>
+    <color name="Red">FFFF0000</color>
+    <color name="Blue">FF0000FF</color>
+    <color name="Green">FF00FF00</color>
+    
+   
+    <color name="Highlight2">FFff4081</color>
+    <color name="Selected">FFededed</color>
+    <color name="Dark1">ff333333</color>
+    <color name="Dark2">b3333333</color>
+    <color name="Dark3">4d333333</color>
+    <color name="Dark4">1f333333</color>
+    <color name="Light1">ffdddddd</color>
+    <color name="Light2">b3dddddd</color>
+    <color name="Light3">4ddddddd</color>
+    <color name="Light4">1fdddddd</color>
+    
+  
+    <color name="FanartFade">2Fffffff</color>
+    <color name="FloorFade">BBdddddd</color>
+    
+    <color name="OSDBack">df000000</color>
+    <color name="Panel">FF333333</color>
+    
+    <color name="PanelWhite100">FFdddddd</color>
+    <color name="PanelWhite70">B3dddddd</color>
+    <color name="PanelWhite30">4Ddddddd</color>
+    <color name="PanelWhite12">1Fdddddd</color>
+    <color name="PanelBlack30">4D000000</color>
+    
+    <color name="White100">FFdddddd</color>
+    <color name="White70">B3dddddd</color>
+    <color name="White30">4Ddddddd</color>
+    <color name="White12">1Fdddddd</color>
+    
+    <color name="Black100">FF000000</color>
+    <color name="Black70">F3000000</color>
+    <color name="Black30">4D000000</color>
+    <color name="Black12">2F000000</color>	
+
+	
+		 <color name="highlight">ff0385b5</color>
+    <color name="background">FF000000</color>
+	<color name="dialog">FFebebeb</color>
+	
+</colors>

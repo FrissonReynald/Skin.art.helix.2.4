@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window id="2003">
+    <defaultcontrol always="true">9000</defaultcontrol>
+    <allowoverlay>no</allowoverlay>
+    <zorder>2</zorder>
+    <controls>       	
+            <control type="group">			
+            <include>GlobalOverlay</include>            
+            <control type="group">
+                <include>DefDialogInfoPanel</include>                
+                <control type="group">
+                     <posx>30</posx>					
+                    <top>50</top>
+                    <width>450</width>
+                    <height>629</height>
+                    <control type="image">
+                        <width>100%</width>
+                        <height>100%</height>
+                        <aspectratio scalediffuse="false">stretch</aspectratio>
+                        <texture diffuse="diffuse/infocast.png">$INFO[Window.Property(movie.thumb)]</texture>
+                    </control>
+                    <control type="button" id="8">
+                        <centertop>50%</centertop>
+                        <centerleft>50%</centerleft>
+                        <width>128</width>
+                        <height>128</height>
+                        <ondown>9000</ondown>
+                        <onup>9000</onup>
+                        <onright condition="IsEmpty(Window.Property(Switcher))">1000</onright>
+                        <onright condition="!IsEmpty(Window.Property(Switcher))">350</onright>
+                        <visible>!IsEmpty(Window.Property(movie.DBID))</visible>
+                        <texturenofocus colordiffuse="ff000000">common/playring.png</texturenofocus>
+                        <texturefocus colordiffuse="Highlight">common/playring.png</texturefocus>
+                    </control>
+                </control>
+                <control type="grouplist">
+                     <left>510</left>
+                <right>30</right>
+                <posy>10</posy>
+				 <posx>485</posx>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="label">				
+				 <width>100%</width>
+				 <height>40</height>
+				 <font>condensed_Home</font>
+				 <align>left</align> 
+                    <label fallback="19055">$INFO[Window.Property(actor.title)]</label>
+                </control>
+                    <!-- MPAA -->
+                    <control type="label">
+                        <width>100%</width>
+                        <height>25</height>
+                         <font>semibold_Big</font>
+						 <textcolor>$VAR[ColorDialogVar]</textcolor>
+						 <include>detail_Sub</include>
+                        <label>20074</label>
+                        <aligny>center</aligny>
+                    </control>
+                    <control type="label">
+                        <width>65%</width>
+                        <height>60</height>
+                         <font>semibold</font>
+                        <aligny>top</aligny>
+                        <label fallback="19055">$INFO[Window.Property(movie.mpaa)]</label>
+                    </control>
+                    <!-- Release Date -->
+                    <control type="label">
+                        <posy>-95</posy>
+                        <width>100%</width>
+                        <height>25</height>
+                        <align>right</align>
+                         <font>semibold_Big</font>
+						 <textcolor>$VAR[ColorDialogVar]</textcolor>
+						 <include>detail_Sub</include>
+                        <label fallback="172">$INFO[Window.Property(movie.Status)]</label>
+                        <aligny>center</aligny>
+                    </control>
+                    <control type="label">
+                        <right>0</right>
+                        <width>35%</width>
+                        <height>60</height>
+                        <font>semibold</font>
+                        <align>right</align>
+                        <aligny>top</aligny>
+                        <label fallback="19055">$INFO[Window.Property(movie.ReleaseDate)]</label>
+                    </control>
+                    <!-- Rating -->
+                    <control type="label">
+                        <width>100%</width>
+                        <height>25</height>
+                         <font>semibold_Big</font>
+						 <textcolor>$VAR[ColorDialogVar]</textcolor>
+						 <include>detail_Sub</include>
+                        <label>563</label>
+                        <aligny>center</aligny>
+                    </control>
+                    <control type="label">
+                        <width>50%</width>
+                        <height>60</height>
+                         <font>semibold</font>
+                        <aligny>top</aligny>
+                        <label fallback="19055">$INFO[Window.Property(movie.rating)]$INFO[Window.Property(movie.votes), (, $LOCALIZE[205])]</label>
+                    </control>
+                    <!-- Budget / Revenue-->
+                    <control type="label">
+                        <posy>-95</posy>
+                        <width>100%</width>
+                        <height>25</height>
+                        <align>right</align>
+                      <font>semibold_Big</font>
+					  <textcolor>$VAR[ColorDialogVar]</textcolor>
+					  <include>detail_Sub</include>
+                        <label>31139</label>
+                        <aligny>center</aligny>
+                        <visible>!IsEmpty(Window.Property(movie.Revenue)) | !IsEmpty(Window.Property(movie.Budget))</visible>
+                    </control>
+                    <control type="label">
+                        <right>0</right>
+                        <width>50%</width>
+                        <height>60</height>
+                         <font>semibold</font>
+                        <align>right</align>
+                        <aligny>top</aligny>
+                        <label>$INFO[Window.Property(movie.Revenue),$]$INFO[Window.Property(movie.Budget), ($LOCALIZE[31140] $,)]</label>
+                        <visible>!IsEmpty(Window.Property(movie.Revenue)) | !IsEmpty(Window.Property(movie.Budget))</visible>
+                    </control>
+                    <!-- Plot -->
+                    <control type="label">
+                        <width>100%</width>
+                        <height>25</height>
+                        <font>semibold_Big</font>
+						<textcolor>$VAR[ColorDialogVar]</textcolor>
+						<include>detail_Sub</include>
+                        <label>207</label>
+                        <aligny>center</aligny>
+                    </control>
+                    <control type="textbox">
+                        <width>100%</width>
+                        <height>128</height>
+                         <font>semibold</font>
+                        <align>justify</align>
+                        <label>$INFO[Window.Property(movie.TagLine),,[CR]]$INFO[Window.Property(movie.Plot)]</label>
+                    </control>
+                    <control type="image" description="Spacer">
+                        <height>10</height>
+                    </control>
+                    <!-- Actor Names -->
+                    <control type="label">
+                        <width>100%</width>
+                        <height>25</height>
+                       <font>semibold_Big</font>
+					   <textcolor>$VAR[ColorDialogVar]</textcolor>
+					   <include>detail_Sub</include>
+                        <label>206</label>
+                        <aligny>center</aligny>
+                        <visible>!Control.HasFocus(1000)</visible>
+                        <visible>Control.IsVisible(1000)</visible>
+                    </control>
+                    <control type="label">
+                        <width>100%</width>
+                        <height>25</height>
+                         <font>semibold_Big</font>
+                        <label>$LOCALIZE[206] - $INFO[Container(1000).ListItem.Label]</label>
+                        <aligny>center</aligny>
+                        <visible>Control.HasFocus(1000)</visible>
+                        <visible>Control.IsVisible(1000)</visible>
+                    </control>
+                    <!-- Youtube -->
+                    <control type="label">
+                        <width>100%</width>
+                        <height>25</height>
+                         <font>semibold_Big</font>
+						 <textcolor>$VAR[ColorDialogVar]</textcolor>
+						 <include>detail_Sub</include>
+                        <label>Youtube</label>
+                        <aligny>center</aligny>
+                        <visible>!Control.HasFocus(350)</visible>
+                        <visible>Control.IsVisible(350)</visible>
+                    </control>
+                    <control type="label">
+                        <width>100%</width>
+                        <height>25</height>
+                         <font>semibold_Big</font>
+                        <label>$LOCALIZE[Youtube] - $INFO[Container(350).ListItem.Label]</label>
+                        <aligny>center</aligny>
+                        <visible>Control.HasFocus(350)</visible>
+                        <visible>Control.IsVisible(350)</visible>
+                    </control>
+                </control>
+                <control type="button" id ="9000">
+                    <description>Switch Movies/Shows</description>
+                    <label>$LOCALIZE[206] / $LOCALIZE[Youtube]</label>
+                    <left>30</left>
+                    <width>450</width>
+                    <height>68</height>
+                    <bottom>30</bottom>
+                    <onup>8</onup>
+                    <ondown>8</ondown>
+                    <onright condition="IsEmpty(Window.Property(Switcher))">1000</onright>
+                    <onright condition="!IsEmpty(Window.Property(Switcher))">350</onright>
+                    <onclick condition="IsEmpty(Window.Property(Switcher))">SetProperty(Switcher,1)</onclick>
+                    <onclick condition="!IsEmpty(Window.Property(Switcher))">ClearProperty(Switcher)</onclick>
+                    <texturenofocus colordiffuse="Black70" border="5">common/box.png</texturenofocus>
+                    <texturefocus colordiffuse="highlight" border="5">common/box.png</texturefocus>
+                    <include>DefDialogButtons</include>
+                </control>
+                <control type="list" id="150"><visible>false</visible></control>
+                <control type="list" id="250"><visible>false</visible></control>
+                <control type="list" id="450"><visible>false</visible></control>
+                <control type="list" id="550"><visible>false</visible></control>
+                <control type="list" id="650"><visible>false</visible></control>
+                <control type="list" id="750"><visible>false</visible></control>
+                <control type="list" id="850"><visible>false</visible></control>
+                <control type="list" id="950"><visible>false</visible></control>
+                <control type="list" id="1050"><visible>false</visible></control>
+                <control type="list" id="1150"><visible>false</visible></control>
+                <control type="list" id="1250"><visible>false</visible></control>
+                <control type="list" id="1350"><visible>false</visible></control>
+                <control type="list" id="1450"><visible>false</visible></control>
+                <control type="list" id="1000" description="Cast">
+                    <width>765</width>
+                    <right>30</right>
+                    <bottom>25</bottom>
+                    <height>225</height>
+                    <onup>9000</onup>
+                    <ondown>9000</ondown>
+                    <onleft>9000</onleft>
+                    <visible>IsEmpty(Window.Property(Switcher))</visible>
+                    <orientation>horizontal</orientation>
+                    <scrolltime>200</scrolltime>
+                    <itemlayout height="225" width="168">
+                        <control type="image">
+                            <left>0</left>
+                            <right>10</right>
+                            <top>0</top>
+                            <bottom>0</bottom>
+                            <texture border="5" colordiffuse="Black12">common/box.png</texture>
+                        </control>
+                        <control type="image">
+                            <left>8</left>
+                            <right>18</right>
+                            <top>8</top>
+                            <bottom>8</bottom>
+                            <texture diffuse="diffuse/wall.png">$INFO[ListItem.Thumb]</texture>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout height="225" width="168">
+                        <control type="image">
+                            <left>0</left>
+                            <right>10</right>
+                            <top>0</top>
+                            <bottom>0</bottom>
+                            <texture border="5" colordiffuse="Black12">common/box.png</texture>
+                            <visible>!Control.HasFocus(1000)</visible>
+                        </control>
+                        <control type="image">
+                            <left>0</left>
+                            <right>10</right>
+                            <top>0</top>
+                            <bottom>0</bottom>
+                            <texture border="5" colordiffuse="White100">common/box.png</texture>
+                            <visible>Control.HasFocus(1000)</visible>
+                        </control>
+                        <control type="image">
+                            <left>8</left>
+                            <right>18</right>
+                            <top>8</top>
+                            <bottom>8</bottom>
+                            <texture diffuse="diffuse/wall.png">$INFO[ListItem.Thumb]</texture>
+                        </control>
+                    </focusedlayout>
+                </control>
+                <control type="list" id="350" description="Youtube">
+                    <width>750</width>
+                    <right>30</right>
+                    <bottom>30</bottom>
+                    <height>232</height>
+                    <onup>9000</onup>
+                    <ondown>9000</ondown>
+                    <onleft>9000</onleft>
+                    <visible>!IsEmpty(Window.Property(Switcher))</visible>
+                    <orientation>horizontal</orientation>
+                    <scrolltime>200</scrolltime>
+                    <itemlayout height="232" width="346">
+                        <control type="image">
+                            <left>0</left>
+                            <right>10</right>
+                            <top>0</top>
+                            <bottom>0</bottom>
+                            <texture border="5" colordiffuse="Black12">common/box.png</texture>
+                        </control>
+                        <control type="image">
+                            <left>8</left>
+                            <right>18</right>
+                            <top>8</top>
+                            <bottom>8</bottom>
+                            <texture diffuse="diffuse/wall.png">$INFO[ListItem.Thumb]</texture>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout height="232" width="346">
+                        <control type="image">
+                            <left>0</left>
+                            <right>10</right>
+                            <top>0</top>
+                            <bottom>0</bottom>
+                            <texture border="5" colordiffuse="Black12">common/box.png</texture>
+                            <visible>!Control.HasFocus(350)</visible>
+                        </control>
+                        <control type="image">
+                            <left>0</left>
+                            <right>10</right>
+                            <top>0</top>
+                            <bottom>0</bottom>
+                            <texture border="5" colordiffuse="White100">common/box.png</texture>
+                            <visible>Control.HasFocus(350)</visible>
+                        </control>
+                        <control type="image">
+                            <left>8</left>
+                            <right>18</right>
+                            <top>8</top>
+                            <bottom>8</bottom>
+                            <texture diffuse="diffuse/wall.png">$INFO[ListItem.Thumb]</texture>
+                        </control>
+                    </focusedlayout>
+                </control>
+            </control>
+        </control>
+    </controls>
+</window>
