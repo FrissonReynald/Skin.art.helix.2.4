@@ -156,26 +156,40 @@
 						<include>settings_Radiobutton</include>
 						<enable>StringCompare(Skin.String(homemenu.type),vertical)</enable>
 					</control>
-					<control type="radiobutton" id="104">
-					    <label>- Top Menu -</label>
-					    <onclick>Skin.ToggleSetting(topmenu.enable)</onclick>
-					    <onclick>Skin.ToggleSetting(downmenu.enable)</onclick>
-					    <selected>Skin.HasSetting(topmenu.enable)</selected>						
-					    <include>settings_Radiobutton</include>
-						<enable>StringCompare(Skin.String(homemenu.type),horizontal)</enable>
-					</control>					
-					<control type="radiobutton" id="105">
-					    <label>- Down Menu -</label>
-					    <onclick>Skin.ToggleSetting(downmenu.enable)</onclick>
-					    <onclick>Skin.ToggleSetting(topmenu.enable)</onclick>
-					    <selected>!Skin.HasSetting(downmenu.enable)</selected>					
-					    <include>settings_Radiobutton</include>
-						<enable>StringCompare(Skin.String(homemenu.type),horizontal)</enable>
-				   </control>
+					
+					
+					
+				<control type="radiobutton" id="104">
+              
+			  <label>Switch Menu position / UP or DOWN </label>
+               <onclick>Skin.ToggleSetting(downmenu.enable)</onclick>        
+               <onclick>Skin.ToggleSetting(topmenu.enable)</onclick>       
+               <selected>!Skin.HasSetting(downmenu.enable)</selected>
+			   <visible>!Skin.HasSetting(topmenu.enable)</visible>
+			   <enable>StringCompare(Skin.String(homemenu.type),horizontal)</enable>
+                          <include>settings_Radiobutton</include>
+            </control> 
+            <control type="radiobutton" id="105">
+                <label>Switch Menu position / UP or Down </label>  
+			  
+               <onclick>Skin.ToggleSetting(topmenu.enable)</onclick>
+               <onclick>Skin.ToggleSetting(downmenu.enable)</onclick>
+               <selected>Skin.HasSetting(topmenu.enable)</selected>
+			   <visible>Skin.HasSetting(downmenu.enable)</visible>
+			     <enable>StringCompare(Skin.String(homemenu.type),horizontal)</enable>
+                    <include>settings_Radiobutton</include>  
+					
+            </control>	
+					
+					
+					
+									
+				
 				   <control type="radiobutton" id="1055">
 					    <label>- Home Icon</label>
 					    <onclick>Skin.ToggleSetting(SkinSettings,Homeicon)</onclick>					    
-					    <selected>Skin.HasSetting(SkinSettings,Homeicon)</selected>						
+					    <selected>Skin.HasSetting(SkinSettings,Homeicon)</selected>	
+						 <enable>StringCompare(Skin.String(homemenu.type),horizontal)</enable>
 					    <include>settings_Radiobutton</include>
 				   </control>
 				   <control type="radiobutton" id="106">
@@ -190,7 +204,9 @@
 						<label>$LOCALIZE[31211]</label>
 						<onclick>ClearProperty(Fanartgrabber,skinsettings)</onclick>
 						<onclick>Skin.ToggleSetting(widgets.disable)</onclick>
-						<selected>Skin.HasSetting(widgets.disable)</selected>						
+						<selected>Skin.HasSetting(widgets.disable)</selected>
+						  <enable>StringCompare(Skin.String(homemenu.type),horizontal) | StringCompare(Skin.String(homemenu.type),vertical)</enable>
+						
 						<include>settings_Radiobutton</include>
 					</control>
 					

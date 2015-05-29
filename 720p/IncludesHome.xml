@@ -397,7 +397,7 @@
 	<include name="widget_Vertical">
 		<orientation>vertical</orientation>
 	</include>
-	<!-- Widget Vertical list -->
+	
 	<!--Widget Vertical -->
 	<include name="widget_Info">
 		<control type="group">
@@ -553,6 +553,11 @@
 			  			<animation type="Conditional" condition="Skin.HasSetting(widgetsdown)" reversible="false">
 				<effect type="Slide"  center="auto" start="0,0" end="0,200" easing="In" tween="Cubic"/>
 			</animation>
+						<animation type="Conditional" condition="!Skin.HasSetting(notinfo)" reversible="false">
+				<effect type="Slide"  center="auto" start="0,0" end="0,110" easing="In" tween="Cubic"/>
+			</animation>
+				
+						
 						</control>
 					<control type="label">
 						<left>60</left>
@@ -572,6 +577,7 @@
 					<label>$VAR[widget_ItemDescription]</label>	
 						<textcolor>ff000000</textcolor>							
 						<include>detail_Text</include>	
+						<visible>Skin.HasSetting(notinfo)</visible>
 						</control>	
 						 	<control type="group">
 						<visible>Control.HasFocus(9310)</visible>
@@ -600,9 +606,16 @@
 							 <visible>Skin.HasSetting(LabelWidget)</visible>
 							</control>
 					<control type="grouplist">
-					<visible>Control.HasFocus(9310)</visible>						
+					<visible>Control.HasFocus(9310)</visible>	
+					<animation type="Conditional" condition="!Skin.HasSetting(notinfo)" reversible="false">
+				<effect type="Slide"  center="auto" start="0,0" end="0,-120" easing="In" tween="Cubic"/>
+			</animation>
+				
 					<animation type="Conditional" condition="Skin.HasSetting(widgetsdown)" reversible="false">
 				<effect type="Slide"  center="auto" start="0,0" end="0,-125" easing="In" tween="Cubic"/>
+			</animation>
+				<animation type="Conditional" condition="Skin.HasSetting(widgetsdown) + !Skin.HasSetting(notinfo)" reversible="false">
+				<effect type="Slide"  center="auto" start="0,0" end="0,118" easing="In" tween="Cubic"/>
 			</animation>
 					<left>420</left>
 						<top>290</top>

@@ -440,7 +440,7 @@
 		<textoffsety>4</textoffsety>
 		<textoffsetx>15</textoffsetx>
 		<textcolor>Color1</textcolor>
-		<texturenofocus colordiffuse="column2"></texturenofocus>
+		<texturenofocus colordiffuse="$VAR[ColorHighlightVar]">frames/frame-nf.png</texturenofocus>
 		<texturefocus colordiffuse="Color1">frames/frame-fo.png</texturefocus>
 		<alttexturenofocus colordiffuse="column2">frames/frame-fo.png</alttexturenofocus>
 		<alttexturefocus colordiffuse="Color1">frames/frame-fo.png</alttexturefocus>
@@ -453,7 +453,7 @@
 		<textoffsety>7</textoffsety>
 		<textcolor>Color1</textcolor>
 		<focusedcolor>Focused</focusedcolor>
-		<texturenofocus colordiffuse="column2"></texturenofocus>
+		<texturenofocus colordiffuse="column2">frames/frame-nf.png</texturenofocus>
 		<texturefocus colordiffuse="Color1">frames/frame-fo.png</texturefocus>
 		<radioheight>30</radioheight>
 		<radiowidth>30</radiowidth>
@@ -466,7 +466,7 @@
 		<textoffsety>7</textoffsety>
 		<textcolor>Color1</textcolor>
 		<focusedcolor>Focused</focusedcolor>
-		<texturenofocus colordiffuse="column2"></texturenofocus>
+		<texturenofocus colordiffuse="column2">frames/frame-nf.png</texturenofocus>
 		<texturefocus colordiffuse="Color1">frames/frame-fo.png</texturefocus>
 		<textureradioonnofocus colordiffuse="Color3">settings/radio/on.png</textureradioonnofocus>
 		<textureradiooffnofocus colordiffuse="Color3">settings/radio/off.png</textureradiooffnofocus>
@@ -740,7 +740,7 @@
 		<font>regular_Small-U</font>
 		<align>right</align>
 		<aligny>center</aligny>
-		<textcolor>Color3</textcolor>
+		<textcolor>$VAR[ColorHighlightVar]</textcolor>
 		<include>transition_Toast</include>
 	</include>
 	<include name="toast_Bottom">

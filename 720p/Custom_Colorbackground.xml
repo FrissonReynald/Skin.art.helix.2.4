@@ -11,14 +11,6 @@
 	
 	<controls>
 	<include>transition_Dialog</include>
-	<control type="label">
-			<label>[COLOR=$VAR[ColourHighlight]]$LOCALIZE[31748][/COLOR] [COLOR=$INFO[Control.GetLabel(100)]]$LOCALIZE[31749][/COLOR]</label>
-			<left>831</left>
-			<top>185</top>
-			<width>auto</width>
-			<font>Medium</font>
-			<color>$VAR[ColourHighlight]</color>
-		</control>
 	<control type="image">
 	<texture border="5" colordiffuse="Black70">frames/contentpanel.png</texture>
 	<left>-40</left>
@@ -34,7 +26,7 @@
             <texture flipx="true">common/arrow-small-right.png</texture>
         </control>
         <control type="image">
-             <left>715</left>
+             <left>1125</left>
 			<top>310</top>
             <width>16</width>
             <height>16</height>
@@ -44,17 +36,17 @@
 			<control type="label" id="1">
 			<width>592</width>
 			<top>15</top>
-			<left>260</left>
+			<left>450</left>
 			<label>Choice a color</label>
 			<textcolor>ffffffff</textcolor>
-			<include>detail_Sub</include>			
+			<include>detail_Title</include>			
 		</control>	
         <control type="group"> <!--content -->
             <control type="panel" id="9500"> <!--colours -->
                 
                 <top>50</top>                
                 <height>500</height>
-				<width>1000</width>
+				<width>1100</width>
                 <onup>9500</onup>
                 <ondown>9500</ondown>
                 <onleft>9500</onleft>

@@ -13,6 +13,12 @@
 		<value condition="StringCompare(Skin.String(homemenu.type),vertical)">$LOCALIZE[31207]</value>
 		<value>$LOCALIZE[31207]</value>
 	</variable>
+	
+	<variable name="home_HorizontalMenuType">
+	    <value condition="Skin.HasSetting(topmenu.enable)">Top Menu</value>		
+		<value condition="Skin.HasSetting(downmenu.enable)">Down Menu</value>
+		<value>Top menu</value>
+	</variable>
 	<!--Color home -->
 	
 	<variable name="ColorHome">

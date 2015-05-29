@@ -24,8 +24,8 @@
             <height>16</height>
             <texture flipx="true">common/arrow-small-right.png</texture>
         </control>
-        <control type="image">
-             <left>715</left>
+         <control type="image">
+             <left>1125</left>
 			<top>310</top>
             <width>16</width>
             <height>16</height>
@@ -33,12 +33,12 @@
         </control>
 	
 			<control type="label" id="1">
-			<width>950</width>
+			<width>592</width>
 			<top>15</top>
-			<left>260</left>
+			<left>450</left>
 			<label>Choice a color</label>
 			<textcolor>ffffffff</textcolor>
-			<include>detail_Sub</include>			
+			<include>detail_Title</include>			
 		</control>	
         <control type="group"> <!--content -->
              <control type="panel" id="9500"> <!--colours -->

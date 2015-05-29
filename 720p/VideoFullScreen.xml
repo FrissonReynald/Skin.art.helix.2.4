@@ -14,7 +14,7 @@
 				<width>Screen_Width</width>
 				<height>170</height>
 				<texture>overlays/osd_info_base.png</texture>
-				<colordiffuse>accent_4</colordiffuse>
+				<colordiffuse>$VAR[ColorHome]</colordiffuse>
 			</control>
 			<control type="group">
 				<left>20</left>
@@ -51,7 +51,7 @@
 				<width>Screen_Width</width>
 				<height>311</height>
 				<texture>white.png</texture>
-				<colordiffuse>base_2</colordiffuse>
+				<colordiffuse>$VAR[ColorHome]</colordiffuse>
 			</control>
 			<control type="group">
 				<left>20</left>
