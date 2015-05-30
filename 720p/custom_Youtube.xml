@@ -30,7 +30,7 @@
 				<preloaditems>2</preloaditems>
 				<include>global_ListScroll</include>	
 				<itemlayout width="404" height="286">
-					<include>view_ThumbEpisode-LayoutCommons</include>
+					<include>view_ThumbEpisode-ContainerCommons</include>
 					<control type="group">
 						<left>7</left>
 						<top>225</top>
@@ -51,7 +51,7 @@
 						<height>219</height>
 						<include>art_Frame-fo</include>
 					</control>
-					<include>view_ThumbEpisode-LayoutCommons</include>
+					<include>view_ThumbEpisode-ContainerCommons</include>
 					<control type="group">
 						<left>7</left>
 						<top>225</top>

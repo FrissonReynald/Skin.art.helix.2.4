@@ -206,7 +206,6 @@
 						<onclick>Skin.ToggleSetting(widgets.disable)</onclick>
 						<selected>Skin.HasSetting(widgets.disable)</selected>
 						  <enable>StringCompare(Skin.String(homemenu.type),horizontal) | StringCompare(Skin.String(homemenu.type),vertical)</enable>
-						
 						<include>settings_Radiobutton</include>
 					</control>
 					
@@ -214,21 +213,22 @@
 						<label>$LOCALIZE[31211] Vertical Down</label>						
 						<onclick>Skin.ToggleSetting(widgetsdown)</onclick>
 						<selected>Skin.HasSetting(widgetsdown)</selected>
-						<enable>Skin.HasSetting(widgets.disable)</enable>
+						<enable>Skin.HasSetting(widgets.disable)  + StringCompare(Skin.String(homemenu.type),vertical)</enable>
 						<include>settings_Radiobutton</include>
 					</control>
 					<control type="radiobutton" id="1071">
 						<label>$LOCALIZE[31211] Vertical list</label>						
 						<onclick>Skin.ToggleSetting(LabelWidget)</onclick>
 						<selected>Skin.HasSetting(LabelWidget)</selected>
-						<enable>Skin.HasSetting(widgets.disable)</enable>
+						<enable>Skin.HasSetting(widgets.disable)  + StringCompare(Skin.String(homemenu.type),vertical)</enable>
 						<include>settings_Radiobutton</include>
 					</control>					
 					<control type="radiobutton" id="1080">
 					    <label>Active Fanart on Widget Vertical</label>
 					    <onclick>Skin.ToggleSetting(DisplayFanartWidget)</onclick>					   
 					    <selected>Skin.HasSetting(DisplayFanartWidget)</selected>
-						<enable>Skin.HasSetting(widgets.disable)</enable>
+						<enable>Skin.HasSetting(widgets.disable)</enable>					
+					   
 						<include>settings_Radiobutton</include>
 				   </control>	
 					<!--single image-->
@@ -635,6 +635,13 @@
 						<include>settings_Radiobutton</include>
 						<enable>System.HasAddon(script.globalsearch)</enable>
 					</control>
+						<control type="button" id="4010">
+						<label>- $LOCALIZE[10140]</label>
+						<onclick>Addon.OpenSettings(script.globalsearch)</onclick>
+						<selected>System.HasAddon(script.globalsearch)</selected>
+						<include>settings_Listbutton</include>
+						<enable>System.HasAddon(script.globalsearch) + !Skin.HasSetting(search.disable)</enable>
+					</control>
 					<!--next aired-->
 					<control type="radiobutton" id="402">
 						<label>$LOCALIZE[31259]</label>
@@ -643,6 +650,13 @@
 						<include>settings_Radiobutton</include>
 						<enable>System.HasAddon(script.tv.show.next.aired)</enable>
 					</control>
+					<control type="button" id="4020">
+						<label>- $LOCALIZE[10140]</label>
+						<onclick>Addon.OpenSettings(script.tv.show.next.aired)</onclick>
+						<selected>System.HasAddon(script.tv.show.next.aired)</selected>
+						<include>settings_Listbutton</include>
+						<enable>System.HasAddon(script.tv.show.next.aired) + !Skin.HasSetting(nextaired.disable)</enable>
+					</control>
 					<!--artistslideshow-->
 					<control type="radiobutton" id="403">
 						<label>$LOCALIZE[31261]</label>
@@ -650,6 +664,13 @@
 						<selected>Skin.HasSetting(artistslideshow.disable)</selected>
 						<include>settings_Radiobutton</include>
 						<enable>System.HasAddon(script.artistslideshow)</enable>
+					</control>
+						<control type="button" id="4030">
+						<label>- $LOCALIZE[10140]</label>
+						<onclick>Addon.OpenSettings(script.artistslideshow)</onclick>
+						<selected>System.HasAddon(script.artistslideshow)</selected>
+						<include>settings_Listbutton</include>
+						<enable>System.HasAddon(script.artistslideshow) + !Skin.HasSetting(artistslideshow.disable)</enable>
 					</control>
 					<!--set default lyrics add-on-->
 					<control type="button" id="404">
@@ -665,8 +686,15 @@
 						<selected>Skin.HasSetting(tvtunes.enable)</selected>
 						<include>settings_Radiobutton</include>
 						<enable>System.HasAddon(script.tvtunes)</enable>
+					</control>	
+					<control type="button" id="4050">
+						<label>- $LOCALIZE[10140]</label>
+						<onclick>Addon.OpenSettings(script.tvtunes)</onclick>
+						<selected>System.HasAddon(script.tvtunes)</selected>
+						<include>settings_Listbutton</include>
+						<enable>System.HasAddon(script.tvtunes) + Skin.HasSetting(tvtunes.enable)</enable>
 					</control>
-					<!--tvtunes-->
+					<!--Cinema Experience-->
 					<control type="radiobutton" id="406">
 						<label>Disable Cinema Experience </label>
 						<onclick>Skin.ToggleSetting(script.cinema.experience)</onclick>
@@ -902,18 +930,22 @@
 						<onclick>Skin.ToggleSetting(LogoWidget)</onclick>					   				    
 					    <selected>Skin.HasSetting(LogoWidget)</selected>						
 					    <include>settings_Radiobutton</include>
+						<enable>Skin.HasSetting(widgets.disable)</enable>
+						
 				   </control>					  				   
 				   <control type="radiobutton" id="709">
 					    <label>Disable Plot  Widget</label>
 						<onclick>Skin.ToggleSetting(notinfo)</onclick>					   				    
 					    <selected>!Skin.HasSetting(notinfo)</selected>
 					    <include>settings_Radiobutton</include>
+						<enable>Skin.HasSetting(widgets.disable)</enable>
+						
 				   </control>
 				  	<control type="radiobutton" id="710">
 						<label>$LOCALIZE[31211] Vertical list Discart</label>						
 						<onclick>Skin.ToggleSetting(widget_Discart)</onclick>
 						<selected>Skin.HasSetting(widget_Discart)</selected>
-						<enable>Skin.HasSetting(widgets.disable)</enable>
+						<enable>Skin.HasSetting(widgets.disable)  + StringCompare(Skin.String(homemenu.type),vertical)</enable>
 						<include>settings_Radiobutton</include>
 					</control>
 				   

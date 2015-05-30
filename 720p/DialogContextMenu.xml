@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<window>	
+<window>
 	<defaultcontrol>1000</defaultcontrol>
-	<include>transition_Dialog</include>	
+	<include>transition_Dialog</include>
 	<coordinates>
 		<system>1</system>
 		<left>0</left>
 		<top>0</top>
-		<origin x="465" y="100" />
+		<origin x="485" y="100" />
 	</coordinates>
 	<controls>
-		<control type="image" id="995">
+		<control type="image">
 			<width>310</width>
 			<height>550</height>
 			<include>dialog_Menu</include>
@@ -26,20 +26,43 @@
 			<width>302</width>
 			<height min="40" max="600">auto</height>
 			<itemgap>0</itemgap>
-			<control type="button" id="997">
+		
+	<!--YouTube-->
+			<control type="button" id="2000">
+				<width>302</width>
+				<label>Youtube</label>
+				<include>dialog_ControlCommons</include>
+				<visible>System.HasAddon(script.extendedinfo)</visible>
+				<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(albums) | Container.Content(songs) | Container.Content(artists) | Container.Content(actors) | Container.Content(directors)</visible>
+				<onclick condition="Container.Content(albums) | Container.Content(songs)">SetProperty(YouTubeQuery,$INFO[ListItem.Artist] $INFO[ListItem.Label],Home)</onclick>
+				<onclick condition="Container.Content(artists) | Container.Content(actors) | Container.Content(directors) | Container.Content(movies) | Container.Content(tvshows)">SetProperty(YouTubeQuery,$INFO[ListItem.Label],Home)</onclick>
+				<onclick>ActivateWindow(1130)</onclick>
+			</control>
+			<!--extended info-->
+			<control type="button" id="2001">
+				<width>302</width>
+				<label>$LOCALIZE[19033]</label>
+				<include>dialog_ControlCommons</include>
+				<onclick condition="Container.Content(actors) | Container.Content(directors) | Container.Content(artists)">RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[ListItem.Label])</onclick>
+				<onclick condition="Container.Content(movies) | Container.Content(tvshows)">SetProperty(Previous,ContextMenu,Home)</onclick>
+				<visible>System.HasAddon(script.extendedinfo) + [Container.Content(actors) | Container.Content(directors) | Container.Content(artists)]</visible>
+			</control>
+			<!--trailer-->
+			<control type="button" id="2002">
 				<width>302</width>
 				<label>$LOCALIZE[20410]</label>
 				<onclick>PlayMedia($ESCINFO[ListItem.Trailer])</onclick>
 				<include>dialog_ControlCommons</include>
-				<visible>[Container.Content(movies) | Window.IsActive(videoplaylist)] + !IsEmpty(ListItem.Trailer)</visible>
+				<visible>Container.Content(movies) + !IsEmpty(ListItem.Trailer)</visible>
 			</control>
-			<control type="button" id="998">
+				<control type="button" id="9997">
 			<width>302</width>
         <label>Information $INFO[ListItem.Label]</label>
         <onclick>RunScript(script.metadata.actors,$INFO[ListItem.Label])</onclick>
         <include>dialog_ControlCommons</include>
 		<visible>System.HasAddon(script.metadata.actors) + [Container.Content(actors) | Container.Content(artist)]</visible>
     </control>
+			
 	<control type="button" id="9980">
 			<width>302</width>
         <label>Library Editor</label>       

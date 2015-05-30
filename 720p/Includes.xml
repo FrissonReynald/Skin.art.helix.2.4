@@ -65,6 +65,7 @@
 		<height>1</height>
 		<texturenofocus>-</texturenofocus>
 		<texturefocus>-</texturefocus>
+		<onclick>noop</onclick>
 		<visible allowhiddenfocus="true">false</visible>
 	</include>
 	<include name="global_ListScroll">
@@ -123,21 +124,19 @@
         <textureradiofocus colordiffuse="Black100">buttons/radio-on.png</textureradiofocus>
         <textureradionofocus colordiffuse="Black30">buttons/radio-off.png</textureradionofocus>
     </include>
-	  <include name="DefDialogButtons">
-        <width>300</width>
-        <font>light_Category</font>
-        <textcolor>White100</textcolor>
-		<focusedcolor>White100</focusedcolor>
-		<selectedcolor>White100</selectedcolor>
-        <texturefocus colordiffuse="White100" border="5">common/box.png</texturefocus>		
-    </include>
-	 <include name="DefDialogButtons2">
-        <width>400</width>
-        <font>condensed_HomeSubSmall</font>
-        <textcolor>White100</textcolor>
-        <texturefocus colordiffuse="White100" border="2">common/box.png</texturefocus>
-		<bordertexture>white.png</bordertexture>
-    </include>
+		<include name="global_Button">
+		<width>145</width>
+		<height>45</height>
+		<font>regular</font>
+		<align>center</align>
+		<textoffsety>4</textoffsety>
+		<textcolor>Color3</textcolor>
+		<focusedcolor>ff000000</focusedcolor>
+		<selectedcolor>Color5</selectedcolor>
+		<texturenofocus border="2" colordiffuse="$VAR[ColorHighlightVar]">views/button.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[ColorHighlightVar]">white.png</texturefocus>
+	</include>
+	
 	<include name="global_Clock">
 		<control type="group">
 			<include>toggle_Menu</include>
@@ -592,7 +591,20 @@
 			</control>
 		</control>
 	</include>
-		<include name="infodialog_Portrait-LayoutCommons">
+	<!--INFO DIALOGS-->
+	<include name="infodialog_ContainerCommons">
+		<top>40</top>
+		<left>60</left>
+		<width>1164</width>
+		<height>350</height>
+		<include>global_Scrolltime</include>
+	</include>
+	<include name="infodialog_SectionHeader">
+		<left>60</left>
+		<font>regular-U</font>
+		<height>40</height>
+	</include>
+	<include name="infodialog_Portrait-LayoutCommons">
 		<control type="image">
 			<width>184</width>
 			<height>266</height>
@@ -631,7 +643,6 @@
 			</control>
 		</control>
 	</include>
-	
 	<include name="infodialog_Portrait-Label">
 		<left>7</left>
 		<top>270</top>
@@ -642,12 +653,48 @@
 		<aligny>bottom</aligny>
 		<textcolor>Color1</textcolor>
 	</include>
-	<include name="infodialog_ContainerCommons">
-		<top>40</top>
-		<left>495</left>
-		<width>765</width>
-		<height>750</height>
-		<include>global_Scrolltime</include>
+	<include name="infodialog_Landscape-LayoutCommons">
+		<control type="image">
+			<width>281</width>
+			<height>164</height>
+			<include>art_Frame-nf</include>
+		</control>
+		<control type="group">
+			<left>7</left>
+			<top>7</top>
+			<width>267</width>
+			<height>150</height>
+			<control type="image">
+				<centerleft>50%</centerleft>
+				<centertop>50%</centertop>
+				<width>72</width>
+				<height>72</height>
+				<texture background="true">DefaultMovies.png</texture>
+				<visible>IsEmpty(ListItem.Art(thumb))</visible>
+			</control>
+			<control type="image">	
+				<width>267</width>
+				<height>150</height>
+				<texture background="true">thumbs/default_Landscape.png</texture>
+				<aspectratio>scale</aspectratio>
+			</control>
+			<control type="image">
+				<width>267</width>
+				<height>150</height>
+				<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+				<aspectratio align="center">scale</aspectratio>
+			</control>
+		</control>
+	</include>
+	<include name="infodialog_Landscape-Label">
+		<left>7</left>
+		<top>168</top>
+		<width>267</width>
+		<height min="25" max="48">auto</height>
+		<font>condensed_Small</font>
+		<align>center</align>
+		<aligny>bottom</aligny>
+		<textcolor>Color1</textcolor>
 	</include>
 	
 	

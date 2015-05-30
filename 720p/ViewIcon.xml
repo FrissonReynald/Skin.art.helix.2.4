@@ -2562,8 +2562,7 @@
 			<include>toggle_Menu</include>
 			<include>transition_Content</include>
 			<include>transition_Info</include>
-			<visible>[Container.Content(episodes) | Container.Content(musicvideos) | [Container.Content(files) + Container.HasFiles]] + !StringCompare(Container.FolderPath,special://videoplaylists/)</visible>
-			<itemlayout width="404" height="286">
+		<visible>[Container.Content(episodes) | Container.Content(musicvideos) | [Container.Content(files) + Container.HasFiles]] | Window.IsActive(tvrecordings) + !StringCompare(Container.FolderPath,special://videoplaylists/)</visible><itemlayout width="404" height="286">
 				<include>view_ThumbEpisode-ContainerCommons</include>
 				<control type="group">
 					<left>7</left>

@@ -448,7 +448,7 @@
                         <height>600</height>
                         <bottom>-700</bottom>
                         <aspectratio aligny="bottom">scale</aspectratio>
-                        <texture colordiffuse="FloorFade">common/shadow-5.png</texture>
+                        <texture colordiffuse="Dark1">common/shadow-5.png</texture>
 							<visible>Control.HasFocus(9310) + !Skin.HasSetting(widgetsdown)</visible>
 							<animation effect="fade" start="100" end="45" time="0" condition="Skin.HasSetting(opacitymenu.disable)">Conditional</animation>
 			             </control> 
@@ -457,7 +457,7 @@
                         <height>740</height>
                         <bottom>-900</bottom>
                         <aspectratio aligny="bottom">scale</aspectratio>
-                        <texture colordiffuse="FloorFade">diffuse/widget_vertical.png</texture>
+                        <texture colordiffuse="Dark1">diffuse/widget_vertical.png</texture>
 								<visible>Control.HasFocus(9310) + !Skin.HasSetting(widgetsdown)</visible>
 								<animation effect="fade" start="100" end="45" time="0" condition="Skin.HasSetting(opacitymenu.disable)">Conditional</animation>
 			             </control>
@@ -466,7 +466,7 @@
                         <height>740</height>
                         <bottom>-1100</bottom>
                         <aspectratio aligny="bottom">scale</aspectratio>
-                        <texture colordiffuse="FloorFade">diffuse/widget_vertical.png</texture>
+                        <texture colordiffuse="Dark1">diffuse/widget_vertical.png</texture>
 								<visible>Control.HasFocus(9310) + Skin.HasSetting(widgetsdown)</visible>
 								<animation effect="fade" start="100" end="45" time="0" condition="Skin.HasSetting(opacitymenu.disable)">Conditional</animation>
 			             </control> 
@@ -475,7 +475,7 @@
                         <height>740</height>
                         <bottom>-1100</bottom>
                         <aspectratio aligny="bottom">scale</aspectratio>
-                        <texture colordiffuse="FloorFade">diffuse/widget_vertical.png</texture>
+                        <texture colordiffuse="Dark1">diffuse/widget_vertical.png</texture>
 								<visible>Control.HasFocus(9310) + Skin.HasSetting(widgetsdown)</visible>
 								<animation effect="fade" start="100" end="45" time="0" condition="Skin.HasSetting(opacitymenu.disable)">Conditional</animation>
 			             </control>  
@@ -484,7 +484,7 @@
                         <height>740</height>
                         <bottom>-900</bottom>
                         <aspectratio aligny="bottom">scale</aspectratio>
-                        <texture colordiffuse="FloorFade">diffuse/widget_vertical.png</texture>
+                        <texture colordiffuse="Dark1">diffuse/widget_vertical.png</texture>
 							<visible>Control.HasFocus(9310) + !Skin.HasSetting(widgetsdown)</visible>
 							<animation effect="fade" start="100" end="75" time="0" condition="Skin.HasSetting(opacitymenu.disable)">Conditional</animation>
 			             </control>
@@ -493,7 +493,7 @@
                         <height>740</height>
                         <bottom>-1200</bottom>
                         <aspectratio aligny="bottom">scale</aspectratio>
-                        <texture colordiffuse="FloorFade">diffuse/widget_vertical.png</texture>
+                        <texture colordiffuse="Dark1">diffuse/widget_vertical.png</texture>
 							<visible>Control.HasFocus(9310) + Skin.HasSetting(widgetsdown)</visible>
 						<animation effect="fade" start="100" end="75" time="0" condition="Skin.HasSetting(opacitymenu.disable)">Conditional</animation>
 			             </control> 
@@ -515,7 +515,7 @@
 						<top>90</top>
 						<right>400</right>
 						<width>200</width>
-						<height>65</height>
+						<height>67</height>
 						<fadetime>250</fadetime>
 						<texture>$VAR[widget_Clearlogo]</texture>
 						<aspectratio align="center" aligny="center" scalediffuse="false">keep</aspectratio>
@@ -548,7 +548,7 @@
 						<width>1060</width>
 						<label>$VAR[widget_ItemTitle]</label>
 						<font>semibold_Big-U</font>
-						<textcolor>ff000000</textcolor>
+						<textcolor>White100</textcolor>	
 							<autoscroll delay="autoscroll_Delay" time="autoscroll_Time" repeat="10000">Skin.HasSetting(autoscroll.enable)</autoscroll>
 			  			<animation type="Conditional" condition="Skin.HasSetting(widgetsdown)" reversible="false">
 				<effect type="Slide"  center="auto" start="0,0" end="0,200" easing="In" tween="Cubic"/>
@@ -565,7 +565,7 @@
 						<width>850</width>
 						<height>80</height>
 						<label>$VAR[widget_ItemInfo]</label>
-						<textcolor>Dark1</textcolor>
+						<textcolor>White100</textcolor>	
 						<include>osd_Sub</include>
 					</control>
 					<control type="textbox">
@@ -575,7 +575,7 @@
 						<height>105</height>
 				<align>justify</align>
 					<label>$VAR[widget_ItemDescription]</label>	
-						<textcolor>ff000000</textcolor>							
+						<textcolor>White100</textcolor>							
 						<include>detail_Text</include>	
 						<visible>Skin.HasSetting(notinfo)</visible>
 						</control>	
@@ -587,21 +587,22 @@
 						<height>125</height>
 						<control type="image">
 						    <left>870</left>
-							 <top>-10</top>
+							 <top>-12</top>
 						<width>160</width>
 						<height>160</height>
 						<fadetime>500</fadetime>
 						<aspectratio>keep</aspectratio>
-						<texture background="true" fallback="overlays/cdart.png">$VAR[widget_Discart]</texture>
+						<texture background="true" fallback="cd/bluray.png">$VAR[widget_Discart]</texture>
+						<visible>!IsEmpty(Container(9310).ListItem.Art(discart))</visible>		
 						<visible>Skin.HasSetting(widget_Discart)</visible>
 						 <visible>Skin.HasSetting(LabelWidget)</visible>
 							</control>
 						  <control type="image">
-                             <left>820</left>
-							 <top>-25</top>
-							 <height>180</height>
-							 <width>135</width>
-                                <aspectratio scalediffuse="false">scale</aspectratio>
+                             <left>795</left>
+							 <top>-33</top>
+							 <height>192</height>
+							 <width>145</width>
+                                <aspectratio scalediffuse="false">stretch</aspectratio>
                                 <texture diffuse="diffuse/wall.png" background="true" fallback="DefaultAddonNone.png">$VAR[widget_Posterthumb]</texture>
 							 <visible>Skin.HasSetting(LabelWidget)</visible>
 							</control>
@@ -628,35 +629,35 @@
 				<width>30</width>
 				<height>30</height> 
 				<texture>DefaultMovies.png</texture>
-				<colordiffuse>ff000000</colordiffuse>
+				<colordiffuse>White100</colordiffuse>
 				<aspectratio align="center">keep</aspectratio>
 			</control>
 			<control type="label">
 				<width min="50" max="200">auto</width>
 				<height>30</height>
 				<label>$INFO[Container(9310).ListItem.VideoCodec,, &#8226; ]$INFO[Container(9310).ListItem.VideoResolution,,P]</label>
-				<textcolor>ff000000</textcolor>
+				<textcolor>White100</textcolor>
 				<include>detail_Sub</include>
 			</control>
 			<control type="image">
 				<width>30</width>
 				<height>30</height> 
 				<texture>DefaultAudio.png</texture>
-				<colordiffuse>ff000000</colordiffuse>
+				<colordiffuse>White100</colordiffuse>
 				<aspectratio align="center">keep</aspectratio>
 			</control>
 			<control type="label">
 				<width min="50" max="200">auto</width>
 				<height>30</height>
 				<label>$INFO[Container(9310).ListItem.AudioCodec]$VAR[flag:Channels, &#8226; ]$INFO[Container(9310).ListItem.AudioLanguage, &#8226; ]</label>
-				<textcolor>ff000000</textcolor>
+				<textcolor>White100</textcolor>
 				<include>detail_Sub</include>
 			</control>
 			<control type="image">
 				<width>30</width>
 				<height>30</height> 
 				<texture>DefaultIconSubtitles.png</texture>
-				<colordiffuse>ff000000</colordiffuse>
+				<colordiffuse>White100</colordiffuse>
 				<aspectratio align="center">keep</aspectratio>
 				<visible>!IsEmpty(Container(9310).ListItem.SubtitleLanguage)</visible>
 			</control>
@@ -664,7 +665,7 @@
 				<width min="50" max="200">auto</width>
 				<height>30</height>
 				<label>$INFO[Container(9310).ListItem.SubtitleLanguage]</label>
-				<textcolor>ff000000</textcolor>
+				<textcolor>White100</textcolor>
 				<include>detail_Sub</include>
 				<visible>!IsEmpty(Container(9310).ListItem.SubtitleLanguage)</visible>
 			</control>
@@ -997,10 +998,10 @@
 					<control type="grouplist">
 					<visible>Control.HasFocus(9210)</visible>						
 					<animation type="Conditional" condition="Skin.HasSetting(topmenu.enable)" reversible="false">
-				<effect type="Slide"  center="auto" start="0,0" end="0,-290" easing="In" tween="Cubic"/>
+				<effect type="Slide"  center="auto" start="0,0" end="0,-165" easing="In" tween="Cubic"/>
 			</animation>
 					<left>750</left>
-						<top>380</top>
+						<top>260</top>
 			<width>900</width>
 			<height>30</height>
 			<itemgap>15</itemgap>

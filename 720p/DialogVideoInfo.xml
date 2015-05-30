@@ -1,534 +1,697 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Foundation Artic Zephyr -->
-<window id="2003">
-    <defaultcontrol always="true">8</defaultcontrol>
-    <allowoverlay>no</allowoverlay>
-    <zorder>0</zorder>
-    <onload condition="System.HasAddon(script.videoextras)">RunScript(script.videoextras,check,"$INFO[ListItem.FilenameAndPath]")</onload>
-    <controls>       
-		<include>screen_Dimensions</include>
-		<include>transition_Content</include>
-		<control type="list" id="9010">
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+	<defaultcontrol always="true">5000</defaultcontrol>
+	<allowoverlay>no</allowoverlay>
+	<controls>
+		<control type="group">
+			<!--check for available content first so conditions can be evaluated in time-->
+			<control type="list" id="5010">
 				<content>plugin://script.extendedinfo?info=similarmovies&amp;&amp;dbid=$INFO[ListItem.DBID]</content>
 			</control>
-        <control type="group">
-            <visible>!Window.IsVisible(script-ExtendedInfo Script-DialogVideoInfo.xml)</visible>
-            <visible>!Window.IsVisible(script-ExtendedInfo Script-DialogInfo.xml)</visible>
-            <include>DefDialogInfoPanel</include>
-			 <control type="image">
+			<control type="list" id="5020">
+				<content>plugin://script.extendedinfo?info=set&amp;&amp;dbid=$INFO[ListItem.DBID]</content>
+			</control>
+			<control type="list" id="5030">
+				<content>plugin://script.extendedinfo?info=similartvshows&amp;&amp;dbid=$INFO[ListItem.DBID]</content>
+			</control>
+			<control type="list" id="5040">
+				<content>plugin://script.extendedinfo?info=directormovies&amp;&amp;director=$INFO[ListItem.Director]</content>
+			</control>
+			<control type="list" id="5050">
+				<content>plugin://script.extendedinfo?info=writermovies&amp;&amp;writer=$INFO[ListItem.Writer]</content>
+			</control>
+			<control type="list" id="5070">
+				<content>plugin://script.extendedinfo?info=youtubesearch&amp;&amp;id=$INFO[ListItem.Title]</content>
+			</control>
+			<include>screen_Dimensions</include>	
+			<!--background-->
+			<control type="image">
 				<include>screen_Dimensions</include>
-				<texture background="true"diffuse="white.png">$VAR[art:Container]</texture>
+				<texture background="true">$VAR[art:Container]</texture>
 				<aspectratio>scale</aspectratio>
 				<animation type="WindowOpen">
-					<effect type="Fade" colordiffuse="ffffffff" time="transition_Open" start="0" end="20" />
+					<effect type="Fade" time="transition_Open" start="0" end="100" />
 				</animation>			
 				<animation type="WindowClose">
-					<effect type="Fade" colordiffuse="ffffffff" time="transition_Close" start="20" end="0" />
+					<effect type="Fade" time="transition_Close" start="100" end="0" />
 				</animation>
-				 <visible>!Control.HasFocus(50) + !Skin.HasSetting(fanart.global)</visible>
 			</control>
- 	<control type="image">			
-				<top>5</top>
-				<left>20</left>
-				<width>460</width>
-				<height>690</height>
-               <texture background="true">black.png</texture>
-			    <aspectratio>stretch</aspectratio>			    
-			  	  		   
-			</control>	
-			<control type="image">			
-				<top>5</top>
-				<left>8</left>
-				<width>1260</width>
-				<height>710</height>
-               <texture background="true"colordiffuse="Black30">white.png</texture>
-			    <aspectratio>stretch</aspectratio>			    
-			   <visible>!Control.HasFocus(50)</visible>				   
-			</control>		
-             <control type="image">
-                <posx>25</posx>
-                <top>10</top>
-                <width>450</width>
-                <height>260</height>
-                <aspectratio scalediffuse="false">scale</aspectratio>
-                <texture diffuse="diffuse/pvrinfo.png">$VAR[FanartImage]</texture>
-                <visible>!Control.HasFocus(50)</visible>
-            </control>	
 			<control type="image">
+				<include>screen_Dimensions</include>
+				<texture background="true"colordiffuse="$VAR[ColorHome]">frames/contentpanel.png</texture>
+				<aspectratio>scale</aspectratio>
+				<animation type="WindowOpen">
+					<effect type="Fade" time="transition_Open" start="0" end="50" />
+				</animation>			
+				<animation type="WindowClose">
+					<effect type="Fade" time="transition_Close" start="50" end="0" />
+				</animation>
+			</control>
+			<control type="group">
+							<left>60</left>
+							<top>15</top>
+									<control type="image">
+						<top>-15</top>
+						<left>-60</left>
+							<width>screen_Width</width>
+							<height>95</height>
+							<texture aligny="bottom"colordiffuse="">black.png</texture>
+					<animation type="WindowOpen">
+					<effect type="Fade" time="transition_Open" start="0" end="85" />
+				</animation>			
+				<animation type="WindowClose">
+					<effect type="Fade" time="transition_Close" start="85" end="0" />
+				</animation>
+							<aspectratio>stretch</aspectratio>
+						</control>	
+							<control type="label">
+								<width min="0" max="1164">auto</width>
+								<label>$INFO[ListItem.Title]</label>
+								<selectedcolor>Color1</selectedcolor>
+								<font>semibold_Big-U</font>
+							</control>
+							<control type="label">
+								<top>28</top>
+								<width>1164</width>
+								<label>$VAR[information:Header]</label>
+								<font>regular_Small-U</font>
+								<include>detail_Sub</include>
+							</control>
+							<control type="label">
+								<top>50</top>
+								<width min="0" max="1164">auto</width>
+								<label>$VAR[information:Sub]</label>
+								<font>regular_Smaller-U</font>
+								<textcolor>Color3</textcolor>
+								<include>detail_Sub</include>
+							</control>
+							<control type="image">
+								<left>-80</left>
+							<top>15</top>
+							<width>86</width>
+							<height>48</height>
+							<aspectratio align="right">keep</aspectratio>
+							<colordiffuse>ffffffff</colordiffuse>
+							<texture>$VAR[flag_Studio]</texture>
+							<visible>!Container.Content(movies)</visible>
+						</control>
+						<control type="image">
+							<left>-80</left>
+							<top>15</top>
+							<width>86</width>
+							<height>48</height>
+							<aspectratio align="right">keep</aspectratio>
+							<colordiffuse>ffffffff</colordiffuse>
+							<texture>$VAR[flag_Studio]</texture>
+							<visible>Container.Content(movies)</visible>
+						</control>
+						<control type="group">
+							<left>800</left>
+							<top>35</top>
+							<align>right</align>
+							<include>detail_Flags</include>						
+						</control>
+						</control>
+			<control type="group">
 			<top>90</top>
-			<left>100</left>
-			<width>250</width>
-            <height>150</height>
-			<include>art_ClearLogo</include>
-			<visible>!Control.HasFocus(50)</visible>			 	
-			</control>        
-			
-				
-             <control type="grouplist">			
-                <left>510</left>
-                <right>30</right>
-                <posy>10</posy>
-				 <posx>485</posx>
-                <visible>Control.IsVisible(4)</visible>
-                <orientation>vertical</orientation>
-                <usecontrolcoords>true</usecontrolcoords>
-                 <itemgap>10</itemgap>				
-				 <control type="label">				
-				 <width>100%</width>
-				 <height>40</height>
-				 <font>condensed_Home</font>
-				 <textcolor>ffffffff</textcolor>
-				 <align>left</align>
-				 <label fallback="19055">$INFO[ListItem.Title]$INFO[ListItem.Year, (,)]</label>
-				 </control>
-				 
-                <!-- MPAA -->
-                <control type="label">
-				<top>-10</top>
+				<include>screen_Dimensions</include>
+				<include>transition_Content</include>
+				<!--main container-->
+				<control type="grouplist" id="4000">
+					<include>screen_Dimensions</include>
+					<onright>70</onright>
+					<pagecontrol>70</pagecontrol>
+					<include>global_Scrolltime</include>
+					<orientation>vertical</orientation>
+					<itemgap>0</itemgap>
+					<!--upper-->
+					<control type="group">
+						<width>100%</width>
+						<height>305</height>
+						<control type="image">
+						<top>270</top>
+							<width>100%</width>
+							<height>50000</height>
+							<texture aligny="bottom"colordiffuse="$VAR[ColorHome]">white.png</texture>
+								<animation type="WindowOpen">
+					<effect type="Fade" time="transition_Open" start="0" end="80" />
+				</animation>			
+				<animation type="WindowClose">
+					<effect type="Fade" time="transition_Close" start="80" end="0" />
+				</animation>
+							<aspectratio>stretch</aspectratio>
+						</control>
+						<!--studio logo-->
+						<control type="label">
+                   <top>290</top>
+				   <left>1050</left>
                     <width>100%</width>
-                    <height>25</height>
-                   <font>semibold_Big</font>
-				   <textcolor>$VAR[ColorDialogVar]</textcolor>
-                    <label>20074</label>
-                    <aligny>center</aligny>
-					<include>detail_Sub</include>
-                </control>
-                <control type="label">
-				<top>-10</top>
-                    <width>65%</width>
-                    <height>40</height>
-                    <font>semibold</font>
-                    <aligny>top</aligny>
-                    <label fallback="19055">$INFO[ListItem.MPAA]</label>
-                </control>
-                
-                <!-- Run Time -->
-                <control type="label">	
-				<top>-75</top>
-                   
-                    <width>100%</width>
-                    <height>35</height>
-                    <align>right</align>
+                    <height>35</height>                   
                     <font>semibold_Big</font>
-					<textcolor>$VAR[ColorDialogVar]</textcolor>
-					<include>detail_Sub</include>
-                    <label>2050</label>
-                    <aligny>center</aligny>
-                </control>
-                <control type="label">
-				<top>-15</top>
-                    <right>0</right>
-                    <width>35%</width>
-                    <height>55</height>
-                    <font>semibold</font>
-                    <align>right</align>
-                    <aligny>top</aligny>
-                    <label fallback="19055">$INFO[ListItem.Duration,, $LOCALIZE[12391]]</label>
-                </control>
-                
-                <!-- Director -->
-                <control type="label">
-				<top>-10</top>
-                    <width>100%</width>
-                    <height>25</height>
-                    <font>semibold_Big</font>
-					<textcolor>$VAR[ColorDialogVar]</textcolor>
-					<include>detail_Sub</include>
-                    <label>20339</label>
-                    <aligny>center</aligny>
-                </control>
-                <control type="label">
-				<top>-10</top>
-                    <width>65%</width>
-                    <height>40</height>
-                    <font>semibold</font>					
-                    <aligny>top</aligny>
-                    <label fallback="19055">$INFO[ListItem.Director]</label>
-                </control>
-                
-                <!-- Last Played -->
-                <control type="label">
-                   <top>-75</top>
-                    <width>100%</width>
-                    <height>35</height>
-                    <align>right</align>
-                    <font>semibold_Big</font>
-					<textcolor>$VAR[ColorDialogVar]</textcolor>
 					<include>detail_Sub</include>
                     <label>568</label>
                     <aligny>center</aligny>
                 </control>
                 <control type="label">
-				<top>-15</top>
-                    <right>0</right>
+				<top>305</top>
+				 <left>1050</left>
                     <width>35%</width>
                     <height>55</height>
-                    <font>semibold_Big</font>
-                    <align>right</align>
+                   <include>detail_Sub</include>
                     <aligny>top</aligny>
                     <label fallback="19055">$INFO[ListItem.LastPlayed]</label>
                 </control>
-                
-                <!-- Writer -->
-                <control type="label">
-				<top>-10</top>
-                    <width>100%</width>
-                    <height>25</height>
-                    <font>semibold_Big</font>
-					<textcolor>$VAR[ColorDialogVar]</textcolor>
-					<include>detail_Sub</include>
-                    <label>20417</label>
-                    <aligny>center</aligny>
-                </control>
-                <control type="label">
-				<top>-10</top>
-                    <width>75%</width>
-                    <height>40</height>
-                    <font>semibold</font>
-                    <aligny>top</aligny>
-                    <label fallback="19055">$INFO[ListItem.Writer]</label>
-                </control>
-                
-                <!-- Languages -->
-                <control type="label">
-                    <top>-75</top>
-                    <width>100%</width>
-                    <height>25</height>
-                    <align>right</align>
-                    <font>semibold_Big</font>
-					<textcolor>$VAR[ColorDialogVar]</textcolor>
-					<include>detail_Sub</include>
-                    <label>445</label>
-                    <aligny>center</aligny>
-                    <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.1))</visible>
-                </control>
-                <control type="label">
-				<top>-15</top>
-                    <right>0</right>
-                    <width>35%</width>
-                    <height>70</height>
-                    <font>semibold</font>
-                    <align>right</align>
-                    <aligny>top</aligny>
-                    <label fallback="19055">[UPPERCASE]$INFO[Window(movieinformation).Property(AudioLanguage.1)]$INFO[Window(movieinformation).Property(AudioLanguage.2), ,]$INFO[Window(movieinformation).Property(AudioLanguage.3), ,]$INFO[Window(movieinformation).Property(AudioLanguage.4), ,]$INFO[Window(movieinformation).Property(AudioLanguage.5), ,][/UPPERCASE]</label>
-                    <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.1))</visible>
-                </control>
-                
-                <!-- Genre -->
-                <control type="label">
-				<top>-15</top>
-                    <width>100%</width>
-                    <height>25</height>
-                    <font>semibold_Big</font>
-					<textcolor>$VAR[ColorDialogVar]</textcolor>
-					<include>detail_Sub</include>
-                    <label>515</label>
-                    <aligny>center</aligny>
-                </control>
-                <control type="label">
-				<top>-10</top>
-                    <width>75%</width>
-                    <height>40</height>
-                    <font>semibold</font>
-                    <aligny>top</aligny>
-                    <label fallback="19055">$INFO[ListItem.Genre]</label>
-                </control>
-                
-                <!-- Subs -->
-                <control type="label">
-                   <top>-75</top>
-                    <width>100%</width>
-                    <height>25</height>
-                    <align>right</align>
-                    <font>semibold_Big</font>
-					<textcolor>$VAR[ColorDialogVar]</textcolor>
-					<include>detail_Sub</include>
-                    <label>287</label>
-                    <aligny>center</aligny>
-                    <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.1))</visible>
-                </control>
-                <control type="label">
-				<top>-15</top>
-                    <right>0</right>
-                    <width>35%</width>
-                    <height>55</height>
-                    <font>semibold</font>
-                    <align>right</align>
-                    <aligny>top</aligny>
-                    <label fallback="19055">[UPPERCASE]$INFO[Window(movieinformation).Property(SubtitleLanguage.1)]$INFO[Window(movieinformation).Property(SubtitleLanguage.2), ,]$INFO[Window(movieinformation).Property(SubtitleLanguage.3), ,]$INFO[Window(movieinformation).Property(SubtitleLanguage.4), ,]$INFO[Window(movieinformation).Property(SubtitleLanguage.5), ,][/UPPERCASE]</label>
-                    <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.1))</visible>
-                </control>
-                
-                <!-- Studio -->
-                <control type="label">
-				<top>-15</top>
-                    <width>100%</width>
-                    <height>25</height>
-                    <font>semibold_Big</font>
-					<textcolor>$VAR[ColorDialogVar]</textcolor>
-					<include>detail_Sub</include>
-                    <label>572</label>
-                    <aligny>center</aligny>
-                </control>
-                <control type="label">
-				<top>-10</top>
-                    <width>100%</width>
-                    <height>40</height>
-                    <font>semibold</font>
-                    <aligny>top</aligny>
-                    <label fallback="19055">$INFO[ListItem.Studio]</label>
-                </control>
-                
-                <!-- Plot -->
-                <control type="label">
-				<top>-10</top>
-                    <width>100%</width>
-                    <height>25</height>
-                    <font>semibold_Big</font>
-					<textcolor>$VAR[ColorDialogVar]</textcolor>
-					<include>detail_Sub</include>
-                    <label>207</label>
-                    <aligny>center</aligny>
-                </control>
-                <control type="textbox" id="4">
-                    <width>100%</width>
-                    <height>160</height>
-                    <font>semibold</font>
-                    <align>justify</align>
-					<autoscroll delay="autoscroll_Delay" time="autoscroll_Time" repeat="2000">true</autoscroll>
-                </control> 
-				  	<control type="group">			
-						<height>125</height>
-						<bottom>20</bottom>
 						<control type="group">
-							<left>0</left>
-							<top>150</top>
-							<include>detail_Flags</include>
-							<control type="label">
-								<top>25</top>
-								<height>20</height>
-								<label>$INFO[ListItem.Path]</label>
-								<font>regular_Smaller-U</font>
-								<textcolor>Color3</textcolor>								
-							</control>
-						</control>
-					
-					</control>
-
-				
-				<visible>!Control.HasFocus(53)</visible>
-            </control>  			
-            <control type="grouplist" id="9000">				
-               <posx>25</posx>
-                <width>450</width>
-                <height>420</height>
-                <bottom>30</bottom>
-                <itemgap>5</itemgap>
-                <onup>9000</onup>
-                <ondown>9000</ondown>
-                <onright condition="!Control.IsVisible(50)">SendClick(2003,5)</onright>
-                <onright condition="!IsEmpty(ListItem.Director)">52</onright>
-                <onright condition="IsEmpty(ListItem.Director)">51</onright>				
-                <orientation>vertical</orientation>				
-                <control type="button" id ="5">
-                    <description>Plot/Cast</description>
-                    <label>206</label>
-                    <width>450</width>
-                  <height>55</height>
-					<left>10</left>
-              <textcolor>FFFFFFFF</textcolor>
-							<include>DefDialogButtons2</include>
-                
-                </control>
-                <control type="button" id ="8">
-                    <description>Play</description>
-                    <label>208</label>
-                    <width>450</width>
-                   <height>55</height>
-					<left>10</left>             
-				<textcolor>FFFFFFFF</textcolor>
-							<include>DefDialogButtons2</include>
-                </control>                
-                    
-			
-                <control type="button" id="11">
-                    <description>Trailer button</description>
-                    <label>20410</label>
-                    <width>450</width>
-                   <height>55</height>
-              <textcolor>FFFFFFFF</textcolor>
-							<include>DefDialogButtons2</include>
-					<selectedcolor>White100</selectedcolor>
-                    <visible>!IsEmpty(ListItem.Trailer)</visible>
-                </control>
-                
-                <control type="button" id="49">
-                    <description>Home Theatre</description>
-                    <label>Home Theatre</label>
-                    <width>450</width>
-                    <height>55</height>
-                   <textcolor>FFFFFFFF</textcolor>
-							<include>DefDialogButtons2</include>
-                    <onclick>Dialog.Close(MovieInformation)</onclick>
-                    <onclick>XBMC.RunScript(script.cinema.experience,movieid=$INFO[ListItem.DBID])</onclick>
-                    <visible>system.hasaddon(script.cinema.experience) + Container.Content(movies)</visible>
-					 <visible>!Skin.HasSetting(script.cinema.experience)</visible>
-                </control>
-
-                <control type="button" id="105">
-                    <description>Extras</description>
-                    <width>450</width>
-                   <height>55</height>
-				   <textcolor>FFFFFFFF</textcolor>
-							<include>DefDialogButtons2</include>
-                    <label>31171</label>
-                    <onclick>RunScript(script.videoextras,display,"$INFO[ListItem.FilenameAndPath]")</onclick>
-                    <visible>System.HasAddon(script.videoextras) + [Container.Content(movies) | Container.Content(episodes) | Container.Content(TVShows) | Container.Content(musicvideos)] + IsEmpty(Window(movieinformation).Property("HideVideoExtrasButton"))</visible>
-                </control>
-
-                <control type="button" id ="6">
-                    <description>Refresh</description>
-                    <label>184</label>
-                    <width>450</width>
-                   <height>55</height>
-                 <textcolor>FFFFFFFF</textcolor>
-							<include>DefDialogButtons2</include>
-                    <visible>!Skin.HasSetting(global.kiosk)</visible>
-                </control>
-
-                <control type="button" id ="10">
-                    <description>Get Thumb</description>
-                    <label>13405</label>
-                    <width>450</width>
-                    <height>55</height>
-                 	<include>DefDialogButtons2</include>
-                    <visible>!Skin.HasSetting(global.kiosk)</visible>
-                </control>
-
-                <control type="button" id="9001">
+							<width>100%</width>
+							<height>50</height>
+							<control type="grouplist" id="5000">
+								<left>60</left>
+								<top>295</top>
+								<width>100%</width>
+								<itemgap>50</itemgap>
+								<orientation>horizontal</orientation>
+								<defaultcontrol always="true">8</defaultcontrol>
+								<!--play-->
+								<control type="button" id="5001">
+									<label>$LOCALIZE[208]</label>
+									<ondown>399</ondown>
+									<onclick>Close</onclick>
+									<onclick>SendClick(2003,8)</onclick>
+									<include>global_Button</include>
+									<visible>!Container.Content(tvshows)</visible>
+								</control>
+								<!--cinema-->
+								<control type="button" id="5002">
+									<label>Cinema</label>
+									<ondown>399</ondown>
+									<onclick>Dialog.Close(movieinformation)</onclick>
+									<onclick>Playlist.Clear</onclick>
+									<onclick>XBMC.RunScript(script.cinema.experience,movieid=$INFO[ListItem.DBID])</onclick>
+									<include>global_Button</include>
+									<visible>Container.Content(movies) + System.HasAddon(script.cinema.experience) + !SubString(ListItem.Path,plugin://)</visible>
+								</control>
+								<!--browse-->
+								<control type="button" id="5003">
+									<label>$LOCALIZE[1024]</label>
+									<ondown>399</ondown>
+									<onclick>SendClick(2003,8)</onclick>
+									<include>global_Button</include>
+									<visible>Container.Content(tvshows)</visible>
+								</control>
+								<!--trailer-->
+								<control type="button" id="5004">
+									<label>$LOCALIZE[20410]</label>
+									<onclick>SendClick(2003,11)</onclick>
+									<ondown>399</ondown>
+									<include>global_Button</include>
+									<visible>!IsEmpty(ListItem.Trailer)</visible>
+								</control>
+								<!--
+								<control type="button" id="5005">
+									<label>More...</label>
+									<onclick>ActivateWindow(1160)</onclick>
+									<ondown>399</ondown>
+									<include>global_Button</include>
+								</control>!-->
+								<control type="button" id="5006">
+									<label>$LOCALIZE[16106]</label>
+									<onclick>ActivateWindow(1120)</onclick>
+									<ondown>399</ondown>
+									<include>global_Button</include>
+									<visible>!SubString(Container.FolderPath,plugin://) + !Skin.HasSetting(global.kiosk)</visible>
+								</control>								
+							<!--	 <control type="button" id="5007">
                     <label>Get Artwork</label>
+					<ondown>399</ondown>
                     <onclick condition="Container.Content(tvshows)">XBMC.RunScript(script.artwork.downloader, mode=gui, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
                     <onclick condition="Container.Content(movies)">XBMC.RunScript(script.artwork.downloader, mode=gui, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
                     <onclick condition="Container.Content(musicvideos)">XBMC.RunScript(script.artwork.downloader, mode=gui, mediatype=musicvideo, dbid=$INFO[ListItem.DBID])</onclick>
                     <description>Get Artwork</description>
-                    <width>450</width>
-                   <height>55</height>
-                    <include>DefDialogButtons2</include>
-                    <visible>!Skin.HasSetting(global.kiosk)</visible>
-                    <visible>[Container.Content(tvshows) | Container.Content(movies) | Container.Content(musicvideos)] + system.hasaddon(script.artwork.downloader)</visible>
-                </control>
-            </control>
-			
-
-            <control type="button" id="52">
-                <visible allowhiddenfocus="true">Control.IsVisible(50)</visible>
-                <top>210</top>
-                <height>55</height>
-				 <width>450</width>
-                <left>485</left>
-                <right>30</right>
-                <ondown>51</ondown>
-                <label>Director :$INFO[ListItem.Director,$LOCALIZE[31191] ,]</label>
-                <align>center</align>
-				
-                <onleft condition="Control.IsVisible(50)">SendClick(2003,5)</onleft>
-                <onleft>9000</onleft>
-                <onclick>RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[ListItem.Director])</onclick>
-                <onclick>Dialog.Close(2003)</onclick>				
-                <texturenofocus border="5" colordiffuse="Black30">common/box.png</texturenofocus>
-                <texturefocus border="5" colordiffuse="$VAR[ColorHome]">common/box.png</texturefocus>				
-                <visible>!IsEmpty(ListItem.Director)</visible>
-				<include>column_ListButtonLabel</include>
-            </control>
-            <control type="list" id="50">
-                <description>Cast</description>                
-               <posx>485</posx>
-                <width>460</width>
-                <height>420</height>
-                <top>270</top>               
-                <onup>50</onup>
-                <ondown>50</ondown>
-                <onleft condition="Control.IsVisible(50)">SendClick(2003,5)</onleft>
-                <onleft>9000</onleft>
-                <orientation>vertical</orientation>
-                <scrolltime>200</scrolltime>			
-                <itemlayout height="60" width="450">
-                    <control type="image">
-                        <width>100%</width>
-                        <height>55</height>
-                        <texture border="2" colordiffuse="Black30">common/box.png</texture>
-							
-						<include>DefDialogButtons2</include>
-                    </control>
-                    <control type="label">
-                        <posx>30</posx>
-                        <width>370</width>
-						<textcolor>FFFFFFFF</textcolor>
-                        <info>ListItem.Label</info>
-						<include>DefDialogButtons2</include>
-                    </control>
-                </itemlayout>
-                <focusedlayout height="60" width="450">
-                    <control type="group">
-                        <visible>Control.HasFocus(50) | Control.HasFocus(51)</visible>
-                        <control type="image">
-                            <width>100%</width>
-                            <height>55</height>
-                            <texture border="5" colordiffuse="$VAR[ColorHome]">common/box.png</texture>
-							<include>DefDialogButtons2</include>
-                        </control>
-
-                        <control type="label">
-                            <posx>30</posx>
-                            <width>440</width>
-                            <info>ListItem.Label</info>
-                            <textcolor>FFFFFFFF</textcolor>
-							<include>DefDialogButtons2</include>
-                        </control>
-                    </control>
-                    <control type="group">
-                        <visible>!Control.HasFocus(50) + !Control.HasFocus(51)</visible>
-                        <control type="image">
-                            <width>100%</width>
-                           <height>55</height>
-                            <texture border="5" colordiffuse="Black30">common/box.png</texture>
-							<include>DefDialogButtons2</include>
-                        </control>
-
-                        <control type="label">
-                            <posx>30</posx>
-                            <width>440</width>
-                            <info>ListItem.Label</info>
-							<textcolor>FFFFFFFF</textcolor>
-							<include>DefDialogButtons2</include>
-                        </control>
-                    </control>
-                </focusedlayout>
-            </control>
-		  
-            <control type="image">
-                <left>950</left>
-                <top>270</top>
-                <width>300</width>
-			<height>420</height>
-                <aspectratio scalediffuse="false">scale</aspectratio>
-                <texture diffuse="diffuse/infocast.png">$INFO[Container(50).ListItem.Thumb]</texture>
-                <visible>Control.HasFocus(51) | Control.HasFocus(50)</visible>
-						
-                <fadetime>350</fadetime>
-            </control>
-
-        </control>
-        <control type="button" id="51">
-            <visible allowhiddenfocus="true">false</visible>
-            <ondown condition="!IsEmpty(Container(50).ListItemNoWrap(1).Label)">Control.Move(50,1)</ondown>
-            <onup condition="!IsEmpty(Container(50).ListItemNoWrap(-1).Label)">Control.Move(50,-1)</onup>
-            <onup condition="IsEmpty(Container(50).ListItemNoWrap(-1).Label) + !IsEmpty(ListItem.Director)">52</onup>
-            <onleft condition="Control.IsVisible(50)">SendClick(2003,5)</onleft>
-            <onleft>9000</onleft>
-            <onclick>RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[Container(50).ListItem.Label])</onclick>
-            <onclick>Dialog.Close(2003)</onclick>
-        </control>
-    </controls>
-	
+                  	<include>global_Button</include>
+                   	<visible>!SubString(Container.FolderPath,plugin://) + !Skin.HasSetting(global.kiosk)</visible>
+							   </control>!-->
+							</control>
+						</control>
+					</control>
+					<!--plot-->
+					<control type="group">
+						<width>100%</width>
+						<height>50</height>
+						<control type="button" id="399">
+							<label>Plot</label>
+							<onup>5000</onup>
+							<ondown>50</ondown>
+							<onclick>SetProperty(Description,[B]$INFO[ListItem.TagLine,,[/B][CR]]$ESCINFO[ListItem.Plot],Home)</onclick>
+							<onclick>RunScript(script.toolbox,info=textviewer,header=$LOCALIZE[20037],text='$ESCINFO[Window(Home).Property(Description)]')</onclick>
+							<include>TriggerButton</include>
+						</control>
+					</control>
+					<control type="textbox" id="400">
+						<width>1164</width>
+						<height min="0" max="80">auto</height>
+						<label>$INFO[ListItem.Director,$LOCALIZE[20339] [B],[/B][CR]]$INFO[ListItem.Writer,$LOCALIZE[20417] [B],[/B]]</label>
+						 <font>semibold</font>
+                    <align>justify</align>
+					<autoscroll delay="autoscroll_Delay" time="autoscroll_Time" repeat="2000">true</autoscroll>
+						<animation effect="slide" end="60" time="0" condition="true">Conditional</animation>
+						<visible>Container.Content(movies) | Container.Content(episodes)</visible>
+					</control>
+					<control type="label">
+						<label></label>
+						<height>20</height>
+					</control>
+					<control type="textbox" id="401">
+						<width>1164</width>
+						<height min="0" max="500">auto</height>
+						<label>$INFO[ListItem.Plot]</label>
+						 <font>semibold</font>
+                    <align>justify</align>
+					<autoscroll delay="autoscroll_Delay" time="autoscroll_Time" repeat="2000">true</autoscroll>
+						<animation effect="slide" end="60" time="0" condition="true">Conditional</animation>
+					</control>
+						<control type="group">
+						<height>125</height>
+						<control type="group">
+							<left>60</left>
+							<top>10</top>
+							<control type="label">
+							<left>-5</left>
+								<top>35</top>
+								<height>20</height>
+								<label>$INFO[ListItem.Path]</label>
+								<font>regular_Smaller-U</font>
+								<textcolor>ffffffff</textcolor>
+							</control>
+						</control>
+					</control>
+					<control type="label">
+						<label></label>
+						<height>20</height>
+					</control>
+					<!--cast-->
+					<control type="group">						
+						<height>390</height>
+						<visible>!Skin.HasSetting(info.cast.disable) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes)] + IntegerGreaterThan(Container(50).NumItems,0)</visible>
+						<control type="label">
+						<top>-57</top>
+							<label>$LOCALIZE[206]$INFO[Container(50).NumItems, (,)]</label>
+							<include>infodialog_SectionHeader</include>
+						</control>						
+						<control type="panel" id="50">
+						<top>-20</top>
+							<onleft>50</onleft>
+							<onright>50</onright>
+							<onup>399</onup>
+							<ondown>5011</ondown>
+							<pagecontrol>501</pagecontrol>
+							<orientation>horizontal</orientation>
+							<include>infodialog_ContainerCommons</include>
+							<itemlayout width="194" height="350">
+								<include>infodialog_Portrait-LayoutCommons</include>
+								<control type="image">
+									<top>210</top>
+									<width>183</width>
+									<height>50</height>
+									<texture aligny="bottom"colordiffuse="Dark1">white.png</texture>
+								</control>
+								<control type="textbox">
+								<top>210</top>
+									<label>[B]$INFO[ListItem.Label][/B]$INFO[ListItem.Label2, [COLOR=Color3][CR],[/COLOR]]</label>
+									<include>infodialog_Portrait-Label</include>
+								</control>
+							</itemlayout>
+							<focusedlayout width="194" height="350">
+								<control type="image">
+									<width>184</width>
+									<height>266</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<include>infodialog_Portrait-LayoutCommons</include>
+								<control type="image">
+									<top>210</top>
+									<width>184</width>
+									<height>50</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<control type="textbox">
+								<top>210</top>
+									<label>[B]$INFO[ListItem.Label][/B]$INFO[ListItem.Label2, [COLOR=Color3][CR],[/COLOR]]</label>
+									<include>infodialog_Portrait-Label</include>
+								</control>
+							</focusedlayout>
+						</control>
+					
+					</control>
+					<!--similar movies-->
+					<control type="group">
+						<height>390</height>
+						<visible>!Skin.HasSetting(info.similar.movies) + Container.Content(movies) + IntegerGreaterThan(Container(5010).NumItems,0) + !Container.IsUpdating(5011)</visible>
+						<control type="label">
+						<top>-56</top>
+							<label>Similar$INFO[Container(5011).NumItems, (,)]</label>
+							<include>infodialog_SectionHeader</include>
+						</control>
+						<control type="panel" id="5011">
+						<top>-20</top>
+							<onleft>5011</onleft>
+							<onright>5011</onright>
+							<onup>50</onup>
+							<ondown>5021</ondown>
+							<pagecontrol>5012</pagecontrol>
+							<orientation>horizontal</orientation>
+							<include>infodialog_ContainerCommons</include>
+							<itemlayout width="194" height="350">
+								<include>infodialog_Portrait-LayoutCommons</include>
+								<control type="image">
+									<top>210</top>
+									<width>183</width>
+									<height>50</height>
+									<texture aligny="bottom"colordiffuse="Dark1">white.png</texture>
+								</control>
+								<top>210</top>
+								<control type="textbox">
+								<top>210</top>
+									<label>$INFO[ListItem.Label]</label>
+									<include>infodialog_Portrait-Label</include>
+								</control>
+							</itemlayout>
+							<focusedlayout width="194" height="350">
+									<control type="image">
+									<width>184</width>
+									<height>266</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<include>infodialog_Portrait-LayoutCommons</include>
+									<control type="image">
+									<top>210</top>
+									<width>184</width>
+									<height>50</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<control type="textbox">
+								<top>210</top>
+									<label>$INFO[ListItem.Label]</label>
+									<include>infodialog_Portrait-Label</include>
+								</control>
+							</focusedlayout>
+							<content>plugin://script.extendedinfo?info=similarmovies&amp;&amp;dbid=$INFO[ListItem.DBID]</content>
+						</control>
+					
+					</control>
+					<!--sets-->
+					<control type="group">
+						<height>390</height>
+						<visible>!Skin.HasSetting(info.sets.disable) + IntegerGreaterThan(Container(5020).NumItems,0) + Container.Content(movies)</visible>
+						<control type="label">
+						<top>-56</top>
+							<label>$LOCALIZE[20457]$INFO[Container(5021).NumItems, (,)]</label>
+							<include>infodialog_SectionHeader</include>
+						</control>
+						<control type="panel" id="5021">
+						<top>-20</top>
+							<onleft>5021</onleft>
+							<onright>5021</onright>
+							<onup>5011</onup>
+							<ondown>5031</ondown>
+							<pagecontrol>5022</pagecontrol>
+							<orientation>horizontal</orientation>
+							<include>infodialog_ContainerCommons</include>
+							<itemlayout width="194" height="350">
+								<include>infodialog_Portrait-LayoutCommons</include>
+								<control type="image">
+									<top>210</top>
+									<width>183</width>
+									<height>50</height>
+									<texture aligny="bottom"colordiffuse="Dark1">white.png</texture>
+								</control>
+								<top>210</top>
+								<control type="textbox">
+								<top>210</top>
+									<label>$INFO[ListItem.Label]</label>
+									<include>infodialog_Portrait-Label</include>
+								</control>
+							</itemlayout>
+							<focusedlayout width="194" height="350">
+									<control type="image">
+									<width>184</width>
+									<height>266</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<include>infodialog_Portrait-LayoutCommons</include>
+									<control type="image">
+									<top>210</top>
+									<width>184</width>
+									<height>50</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<control type="textbox">
+								<top>210</top>
+									<label>$INFO[ListItem.Label]</label>
+									<include>infodialog_Portrait-Label</include>
+								</control>
+							</focusedlayout>
+							<content>plugin://script.extendedinfo?info=set&amp;&amp;dbid=$INFO[ListItem.DBID]</content>
+						</control>
+					
+					</control>
+					<!--similar shows-->
+					<control type="group">
+						<height>390</height>
+						<visible>!Skin.HasSetting(info.similar.tvshows) + IntegerGreaterThan(Container(5030).NumItems,0) + Container.Content(tvshows)</visible>
+						<control type="label">
+						<top>-56</top>
+							<label>Similar $INFO[Container(5031).NumItems, (,)]</label>
+							<include>infodialog_SectionHeader</include>
+						</control>
+						<control type="panel" id="5031">
+						<top>-20</top>
+							<onleft>5031</onleft>
+							<onright>5031</onright>
+							<onup>5021</onup>
+							<ondown>5041</ondown>
+							<pagecontrol>5032</pagecontrol>
+							<orientation>horizontal</orientation>
+							<include>infodialog_ContainerCommons</include>
+							<itemlayout width="194" height="350">
+								<include>infodialog_Portrait-LayoutCommons</include>
+								<control type="image">
+									<top>210</top>
+									<width>183</width>
+									<height>50</height>
+									<texture aligny="bottom"colordiffuse="Dark1">white.png</texture>
+								</control>
+								<top>210</top>
+								<control type="textbox">
+								<top>210</top>
+									<label>$INFO[ListItem.Label]</label>
+									<include>infodialog_Portrait-Label</include>
+								</control>
+							</itemlayout>
+							<focusedlayout width="194" height="350">
+									<control type="image">
+									<width>184</width>
+									<height>266</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<include>infodialog_Portrait-LayoutCommons</include>
+									<control type="image">
+									<top>210</top>
+									<width>184</width>
+									<height>50</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<control type="textbox">
+								<top>210</top>
+									<label>$INFO[ListItem.Label]</label>
+									<include>infodialog_Portrait-Label</include>
+								</control>
+							</focusedlayout>
+							<content>plugin://script.extendedinfo?info=similartvshows&amp;&amp;dbid=$INFO[ListItem.DBID]</content>
+						</control>
+					
+					</control>
+					<control type="group">
+						<height>390</height>
+						<visible>!Skin.HasSetting(info.director.disable) + IntegerGreaterThan(Container(5040).NumItems,0)</visible>
+						<control type="label">
+						<top>-56</top>
+							<label>director $INFO[Container(5041).NumItems, (,)]</label>
+							<include>infodialog_SectionHeader</include>
+						</control>
+						<control type="panel" id="5041">
+						<top>-20</top>
+							<onleft>5041</onleft>
+							<onright>5041</onright>
+							<onup>5031</onup>
+							<ondown>5051</ondown>
+							<pagecontrol>5042</pagecontrol>
+							<orientation>horizontal</orientation>
+							<include>infodialog_ContainerCommons</include>
+							<itemlayout width="194" height="350">
+								<include>infodialog_Portrait-LayoutCommons</include>
+								<control type="image">
+									<top>210</top>
+									<width>183</width>
+									<height>50</height>
+									<texture aligny="bottom"colordiffuse="Dark1">white.png</texture>
+								</control>
+								<top>210</top>
+								<control type="textbox">
+								<top>210</top>
+									<label>$INFO[ListItem.Label]</label>
+									<include>infodialog_Portrait-Label</include>
+								</control>
+							</itemlayout>
+							<focusedlayout width="194" height="350">
+									<control type="image">
+									<width>184</width>
+									<height>266</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<include>infodialog_Portrait-LayoutCommons</include>
+									<control type="image">
+									<top>210</top>
+									<width>184</width>
+									<height>50</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<control type="textbox">
+								<top>210</top>
+									<label>$INFO[ListItem.Label]</label>
+									<include>infodialog_Portrait-Label</include>
+								</control>
+							</focusedlayout>
+							<content>plugin://script.extendedinfo?info=directormovies&amp;&amp;director=$INFO[ListItem.Director]</content>
+						</control>
+					
+					</control>
+					<control type="group">
+						<height>390</height>
+						<visible>!Skin.HasSetting(info.writer.disable) + IntegerGreaterThan(Container(5050).NumItems,0)</visible>
+						<control type="label">
+						<top>-56</top>
+							<label>writer $INFO[Container(5051).NumItems, (,)]</label>
+							<include>infodialog_SectionHeader</include>
+						</control>
+						<control type="panel" id="5051">
+						<top>-20</top>
+							<onleft>5051</onleft>
+							<onright>5051</onright>
+							<onup>5041</onup>
+							<ondown>5071</ondown>
+							<pagecontrol>5052</pagecontrol>
+							<orientation>horizontal</orientation>
+							<include>infodialog_ContainerCommons</include>
+							<itemlayout width="194" height="350">
+								<include>infodialog_Portrait-LayoutCommons</include>
+								<control type="image">
+									<top>210</top>
+									<width>183</width>
+									<height>50</height>
+									<texture aligny="bottom"colordiffuse="Dark1">white.png</texture>
+								</control>
+								<top>210</top>
+								<control type="textbox">
+								<top>210</top>
+									<label>$INFO[ListItem.Label]</label>
+									<include>infodialog_Portrait-Label</include>
+								</control>
+							</itemlayout>
+							<focusedlayout width="194" height="350">
+									<control type="image">
+									<width>184</width>
+									<height>266</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<include>infodialog_Portrait-LayoutCommons</include>
+									<control type="image">
+									<top>210</top>
+									<width>184</width>
+									<height>50</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<control type="textbox">
+								<top>210</top>
+									<label>$INFO[ListItem.Label]</label>
+									<include>infodialog_Portrait-Label</include>
+								</control>
+							</focusedlayout>
+							<content>plugin://script.extendedinfo?info=writermovies&amp;&amp;writer=$INFO[ListItem.Writer]</content>
+						</control>
+					
+					</control>
+					<!--youtube-->
+					<control type="group">
+						<height>274</height>
+						<visible>IntegerGreaterThan(Container(5070).NumItems,0) + [Container.Content(movies) + !Skin.HasSetting(info.youtube.movies)] | [Container.Content(tvshows) + !Skin.HasSetting(info.youtube.tvshows)] | [Container.Content(episodes) + !Skin.HasSetting(info.youtube.episodes)]</visible>
+						<control type="label">
+						<top>-56</top>
+							<label>YouTube$INFO[Container(5071).NumItems, (,)]</label>
+							<include>infodialog_SectionHeader</include>
+						</control>
+						<control type="panel" id="5071">
+						<top>-20</top>
+							<onleft>5071</onleft>
+							<onright>5071</onright>
+							<onup>5041</onup>
+							<ondown>noop</ondown>
+							<pagecontrol>5042</pagecontrol>
+							<orientation>horizontal</orientation>
+							<include>infodialog_ContainerCommons</include>
+							<itemlayout width="291" height="234">
+								<include>infodialog_Landscape-LayoutCommons</include>
+									<control type="image">
+									<top>210</top>
+									<width>281</width>
+									<height>164</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<control type="textbox">
+									<top>210</top>
+									<label>$INFO[ListItem.Label]</label>
+									<include>infodialog_Landscape-Label</include>
+								</control>
+							</itemlayout>
+							<focusedlayout width="291" height="234">
+								<control type="image">
+								<width>281</width>
+									<height>164</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<include>infodialog_Landscape-LayoutCommons</include>
+									<control type="image">
+									<top>210</top>
+									<width>281</width>
+									<height>164</height>
+									<texture aligny="bottom"colordiffuse="$VAR[ColorHighlightVar]">white.png</texture>
+								</control>
+								<control type="textbox">
+									<top>210</top>
+									<label>$INFO[ListItem.Label]</label>
+									<include>infodialog_Landscape-Label</include>
+								</control>
+							</focusedlayout>
+							<content>plugin://script.extendedinfo?info=youtubesearch&amp;&amp;id=$INFO[ListItem.Title]</content>
+						</control>
+						<control type="scrollbar" id="5072">
+							<left>60</left>
+							<top>270</top>
+							<width>1152</width>
+							<include>scrollbar_Horizontal</include>
+							<visible>Control.HasFocus(5071)</visible>
+						</control>
+					</control>
+				</control>
+			</control>
+			<!--pagecontrol-->
+			<control type="scrollbar" id="70">
+				<top>0</top>
+				<left>1272</left>
+				<width>8</width>
+				<height>720</height>
+				<onleft>4000</onleft>
+				<texturesliderbar>views/pagecontrol/grip-fo.png</texturesliderbar>
+			</control>
+		</control>
+	</controls>
 </window>

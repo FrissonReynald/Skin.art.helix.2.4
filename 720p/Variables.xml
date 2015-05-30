@@ -845,11 +845,12 @@
 	</variable>	
 <!--FLAGS-->
 	<variable name="flag_Studio">
-		<value condition="Container.Content(movies)">$INFO[Listitem.Studio,flags/studios/,.png]</value>
+			<value condition="Container.Content(movies)">$INFO[Listitem.Studio,flags/studios/,.png]</value>
 		<value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)">$INFO[Listitem.Studio,flags/networks/,.png]</value>
 		<value condition="Container.Content(musicvideos)">$INFO[Listitem.Studio,flags/labels/,.png]</value>
 		<value condition="Window.IsVisible(musiclibrary)">$INFO[Listitem.Property(Album_Label),flags/labels/,.png]</value>
 	</variable>
+	
 	<variable name="status_List">
 		<value condition="ListItem.IsResumable + !Skin.HasSetting(overlay.resumable.disable)">views/status/list/OverlayWatching.png</value>
 		<value condition="[Container.Content(movies) + !Skin.HasSetting(overlay.movies.disable)] | [Container.Content(tvshows) + !Skin.HasSetting(overlay.tvshows.disable)] | [Container.Content(episodes) + !Skin.HasSetting(overlay.episodes.disable)] | [Container.Content(seasons) + !Skin.HasSetting(overlay.tvshows.disable)] | [Container.Content(Files) + Container.HasFiles + !Skin.HasSetting(overlay.files.disable)] + ![SubString(Container.FolderPath,plugin://) | SubString(Container.FolderPath,sources://)]">$INFO[ListItem.Overlay,views/status/list/]</value>
@@ -1467,31 +1468,7 @@
 	</variable>
 
 <!--MEDIA VIEWS-->
-	<variable name="nextaired_Header">
-		<value condition="StringCompare(Window(Home).Property(tvguide),monday)">$INFO[Container(200).Listitem.Property(NextDate),$LOCALIZE[11] ]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),tuesday)">$INFO[Container(201).Listitem.Property(NextDate),$LOCALIZE[12] ]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),wednesday)">$INFO[Container(202).Listitem.Property(NextDate),$LOCALIZE[13] ]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),thursday)">$INFO[Container(203).Listitem.Property(NextDate),$LOCALIZE[14] ]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),friday)">$INFO[Container(204).Listitem.Property(NextDate),$LOCALIZE[15] ]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),saturday)">$INFO[Container(205).Listitem.Property(NextDate),$LOCALIZE[16] ]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),sunday)">$INFO[Container(206).Listitem.Property(NextDate),$LOCALIZE[17] ]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),yesterday)">$INFO[Window(home).Property(NextAired.YesterdayText)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),today)">$INFO[Window(home).Property(NextAired.TodayText)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),tomorrow)">$INFO[Window(home).Property(NextAired.TomorrowText)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),nplus2)">$INFO[Window(home).Property(NextAired.203.Weekday)] $INFO[Window(home).Property(NextAired.203.Date)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),nplus3)">$INFO[Window(home).Property(NextAired.204.Weekday)] $INFO[Window(home).Property(NextAired.204.Date)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),nplus4)">$INFO[Window(home).Property(NextAired.205.Weekday)] $INFO[Window(home).Property(NextAired.205.Date)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),nplus5)">$INFO[Window(home).Property(NextAired.206.Weekday)] $INFO[Window(home).Property(NextAired.206.Date)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),nplus6)">$INFO[Window(home).Property(NextAired.207.Weekday)] $INFO[Window(home).Property(NextAired.207.Date)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),nplus7)">$INFO[Window(home).Property(NextAired.208.Weekday)] $INFO[Window(home).Property(NextAired.208.Date)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),nplus8)">$INFO[Window(home).Property(NextAired.209.Weekday)] $INFO[Window(home).Property(NextAired.209.Date)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),nplus9)">$INFO[Window(home).Property(NextAired.210.Weekday)] $INFO[Window(home).Property(NextAired.210.Date)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),nplus10)">$INFO[Window(home).Property(NextAired.211.Weekday)] $INFO[Window(home).Property(NextAired.211.Date)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),nplus11)">$INFO[Window(home).Property(NextAired.212.Weekday)] $INFO[Window(home).Property(NextAired.212.Date)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),nplus12)">$INFO[Window(home).Property(NextAired.213.Weekday)] $INFO[Window(home).Property(NextAired.213.Date)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),nplus13)">$INFO[Window(home).Property(NextAired.214.Weekday)] $INFO[Window(home).Property(NextAired.214.Date)]</value>
-		<value condition="StringCompare(Window(Home).Property(tvguide),nplus14)">$INFO[Window(home).Property(NextAired.215.Weekday)] $INFO[Window(home).Property(NextAired.215.Date)]</value>
-	</variable>
+	
 
 	<variable name="gallery_Header">
 		<value condition="Container.Content(tvshows)">$INFO[ListItem.Genre]</value>
@@ -1536,7 +1513,20 @@
 		<value condition="!IsEmpty(ListItem.Property(Artist_Disbanded))">$LOCALIZE[21896]</value>
 	</variable>
 
+		<variable name="information:Header">
+		<value condition="Container.Content(movies)">$INFO[ListItem.Year]$INFO[ListItem.Duration, &#8226; , $LOCALIZE[31701]]$INFO[ListItem.Genre, &#8226; ]</value>
+		<value condition="Container.Content(tvshows) + !Skin.HasSetting(nextaired.disable)">$INFO[Window(Home).Property(NextAired.Status)]$INFO[Window(Home).Property(NextAired.NextDate), &#8226; $LOCALIZE[31153]: ]$INFO[ListItem.Studio, &#8226; ]</value>
+		<value condition="Container.Content(tvshows) + Skin.HasSetting(nextaired.disable)">$INFO[ListItem.Property(TotalEpisodes),, ]$VAR[media:EpisodeCount,, &#8226; $LOCALIZE[31153]: ]</value>
+		<value condition="Container.Content(episodes)">$INFO[ListItem.TVShowTitle]</value>
+	</variable>
 
+	
+		<variable name="information:Sub">
+		<value condition="Container.Content(movies)">$INFO[ListItem.Studio]</value>
+		<value condition="Container.Content(tvshows) + !Skin.HasSetting(nextaired.disable)">$INFO[ListItem.Property(TotalEpisodes),, ]$VAR[media:EpisodeCount,, ]$INFO[ListItem.Property(UnwatchedEpisodes),(, $LOCALIZE[16101])]</value>
+		<value condition="Container.Content(tvshows) + Skin.HasSetting(nextaired.disable)">$INFO[ListItem.Premiered,$LOCALIZE[20416]: ]</value>
+		<value condition="Container.Content(episodes)">$INFO[ListItem.Season,$LOCALIZE[20373] , - ]$INFO[ListItem.Episode,$LOCALIZE[20359] ]$INFO[ListItem.Premiered, &#8226; ]</value>
+	</variable>
 <!--RATINGS-->
 	<variable name="rating:Song">
 		<value condition="Container.Content(songs) + !IsEmpty(ListItem.Rating) + SubString(ListItem.Rating,5)">&#8226; &#9733;&#9733;&#9733;&#9733;&#9733;</value>
@@ -1669,16 +1659,7 @@
 	</variable>
 
 <!--WINDOW-->
-	<variable name="window:Background">
-		<value condition="[Window.IsActive(VideoLibrary) | Window.IsActive(Videos)]">special://skin/backgrounds/defaults/video.jpg</value>
-		<value condition="[SubString(Container.FolderPath,pvr://) | Window.IsActive(tvguide) | Window.IsActive(radioguide) | Window.IsActive(tvsearch) | Window.IsActive(radiosearch)]">special://skin/backgrounds/defaults/livetv.jpg</value>
-		<value condition="[Window.IsActive(musicfiles) | Window.IsActive(musiclibrary) | Window.IsActive(musicplaylisteditor)]">special://skin/backgrounds/defaults/music.jpg</value>
-		<value condition="Window.IsActive(pictures) + !Control.IsVisible(531)">special://skin/backgrounds/defaults/pictures.jpg</value>
-		<value condition="Window.IsActive(programs)">special://skin/backgrounds/defaults/programs.jpg</value>
-		<value condition="Window.IsActive(weather) + !Skin.HasSetting(fanart.weather)">special://skin/backgrounds/defaults/weather.jpg</value>
-		<value condition="Window.IsActive(settings) | Window.IsActive(SettingsCategory.xml) | Window.IsActive(filemanager) | Window.IsActive(systeminfo) | Window.IsActive(profiles) | Window.IsActive(skinsettings)">special://skin/backgrounds/defaults/settings.jpg</value>
-		<value condition="Window.IsActive(addonbrowser)">special://skin/backgrounds/defaults/addons.jpg</value>
-	</variable>
+
 
 	<variable name="window:NumItems">
 		<value condition="[Window.IsActive(programs) | Window.IsActive(pictures) | Window.IsActive(musiclibrary) | Window.IsActive(musicfiles) | Window.IsActive(videolibrary) | Window.IsActive(videoplaylist) | Window.IsActive(addonbrowser) | Window.IsActive(musicplaylist)] + ![Window.IsActive(movieinformation) | Window.IsActive(musicinformation) | Window.IsActive(pvr) | Window.IsActive(script-globalsearch-main.xml)]">[B]$INFO[Container.NumItems][/B] $LOCALIZE[31143], $LOCALIZE[31144] $INFO[Container.SortMethod]</value>
@@ -1689,46 +1670,9 @@
 		<value condition="SubString(Container.FolderPath,pvr://) | Window.IsActive(tvguide) | Window.IsActive(radioguide) | Window.IsActive(tvsearch) | Window.IsActive(radiosearch)">[B]$INFO[Container.NumItems][/B] $LOCALIZE[31143], $LOCALIZE[31144] $INFO[Container.SortMethod]</value>
 	</variable>
 
-	<variable name="window:Title.Video">
-		<value condition="Window.IsVisible(busydialog) + !Window.IsActive(virtualkeyboard)">&#160;</value>
-		<value condition="IsEmpty(Container.FolderPath)">$LOCALIZE[157]</value>
-		<value condition="StringCompare(Container.FolderPath,sources://video/)">$LOCALIZE[744]</value>
-		<value condition="StringCompare(Container.FolderPath,addons://sources/video/)">$LOCALIZE[1037]</value>
-		<value condition="StringCompare(Container.FolderPath,special://videoplaylists/)">$LOCALIZE[20012]</value>
-		<value condition="StringCompare(Container.FolderPath,plugin://script.watchlist/)">$LOCALIZE[31013]</value>
-		<value condition="StringCompare(Container.FolderPath,plugin://script.watchlist/?type=episodes)">$LOCALIZE[20343] [COLOR=$VAR[ColorDialogVar]]$LOCALIZE[31013][/COLOR]</value>
-		<value condition="StringCompare(Container.FolderPath,plugin://script.watchlist/?type=movies)">$LOCALIZE[342] [COLOR=$VAR[ColorDialogVar]]$LOCALIZE[31013][/COLOR]</value>
-		<value condition="StringCompare(Container.FolderPath,videodb://movies/)">$LOCALIZE[342]</value>
-		<value condition="SubString(Container.FolderPath,movies-unwatched.xsp,Right)">$LOCALIZE[342] [COLOR=$VAR[ColorDialogVar]]$LOCALIZE[16101][/COLOR]</value>
-		<value condition="SubString(Container.FolderPath,movies-inprogress.xsp,Right)">$LOCALIZE[342] [COLOR=$VAR[ColorDialogVar]]$LOCALIZE[575][/COLOR]</value>
-		<value condition="SubString(Container.FolderPath,videodb://movies/,left)">$LOCALIZE[342] [COLOR=$VAR[ColorDialogVar]]$INFO[Container.FolderName][/COLOR]</value>
-		<value condition="SubString(Container.FolderPath,videodb://recentlyaddedmovies/)">$LOCALIZE[342] [COLOR=$VAR[ColorDialogVar]]$LOCALIZE[31705][/COLOR]</value>
-		<value condition="Container.Content(seasons) + IsEmpty(Container().ListItem(0).TVShowTitle)">$INFO[Container().ListItem(1).TVShowTitle]</value>
-		<value condition="Container.Content(seasons)">$INFO[Container().ListItem().TVShowTitle]</value>
-		<value condition="StringCompare(Container.FolderPath,videodb://recentlyaddedepisodes/)">$LOCALIZE[20360] [COLOR=$VAR[ColorDialogVar]]$LOCALIZE[31705][/COLOR]</value>
-		<value condition="SubString(Container.FolderPath,episodes-unwatched.xsp,Right)">$LOCALIZE[20360] [COLOR=$VAR[ColorDialogVar]]$LOCALIZE[16101][/COLOR]</value>
-		<value condition="SubString(Container.FolderPath,plugin://plugin)">$LOCALIZE[24001] [COLOR=$VAR[ColorDialogVar]]$INFO[Container.FolderName][/COLOR]</value>
-		<value condition="Container.Content(episodes) + IsEmpty(Container().ListItem(0).TVShowTitle)">$INFO[Container().ListItem(1).TVShowTitle]</value>
-		<value condition="Container.Content(episodes)">$INFO[Container().ListItem().TVShowTitle]</value>
-		<value condition="StringCompare(Container.FolderName,$LOCALIZE[626])">$LOCALIZE[20343] [COLOR=$VAR[ColorDialogVar]]$LOCALIZE[575][/COLOR]</value>
-		<value condition="StringCompare(Container.FolderPath,videodb://tvshows/)">$LOCALIZE[20343]</value>
-		<value condition="SubString(Container.FolderPath,videodb://tvshows/,Left)">$LOCALIZE[20343] [COLOR=$VAR[ColorDialogVar]]$INFO[Container.FolderName][/COLOR]</value>
-		<value condition="StringCompare(Container.FolderPath,videodb://musicvideos/)">$LOCALIZE[20389]</value>
-		<value condition="SubString(Container.FolderPath,videodb://musicvideos/)">$LOCALIZE[20389] [COLOR=$VAR[ColorDialogVar]]$INFO[Container.FolderName][/COLOR]</value>
-		<value condition="SubString(Container.FolderPath,videodb://recentlyaddedmusicvideos/)">$LOCALIZE[20389] [COLOR=$VAR[ColorDialogVar]]$LOCALIZE[31705][/COLOR]</value>
-		<value condition="SubString(Container.FolderPath,special://profile/playlists/video/)">$LOCALIZE[559] [COLOR=$VAR[ColorDialogVar]]$INFO[Container.FolderName][/COLOR]</value>
-		<value>$LOCALIZE[744] [COLOR=$VAR[ColorDialogVar]]$INFO[Container.FolderName][/COLOR]</value>
-	</variable>
 
-	<variable name="window:Title.Music">
-		<value condition="Window.IsVisible(busydialog) + !Window.IsActive(virtualkeyboard)">&#160;</value>
-		<value condition="IsEmpty(Container.FolderPath)">$LOCALIZE[2]</value>
-		<value condition="StringCompare(Container.FolderPath,videodb://musicvideos/)">$LOCALIZE[20389]</value>
-		<value condition="Container.Content(musicvideos)">$LOCALIZE[20389] [COLOR=$VAR[ColorDialogVar]]$INFO[Container.FolderName][/COLOR]</value>
-		<value condition="SubString(Container.FolderPath,recentlyaddedalbums,Right)">$LOCALIZE[2] [COLOR=$VAR[ColorDialogVar]]$LOCALIZE[31705][/COLOR]</value>
-		<value condition="SubString(Container.FolderPath,recentlyplayedalbums,Right)">$LOCALIZE[2] [COLOR=$VAR[ColorDialogVar]]$LOCALIZE[31016][/COLOR]</value>
-		<value>$LOCALIZE[2] [COLOR=$VAR[ColorDialogVar]]$INFO[Container.FolderName][/COLOR]</value>
-	</variable>
+
+	
 
 	<variable name="window:Title.System">
 		<value condition="Window.IsVisible(busydialog) + !Window.IsActive(virtualkeyboard)">&#160;</value>
